@@ -4,32 +4,10 @@
 
 @section('auth')
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
-    <title>Soft UI Dashboard Tailwind</title>
-    <!-- Fonts and icons -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-    <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <!-- Nucleo Icons -->
-    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
-    <!-- Main Styling -->
-    <link href="../assets/css/styles.css?v=1.0.2" rel="stylesheet" />
-
-</head>
-
 <body class="m-0 font-sans antialiased font-normal bg-white text-start text-size-base leading-default text-slate-500">
-
-
-
     <main class="mt-0 transition-all duration-200 ease-soft-in-out">
         <section class="min-h-screen mb-32">
-            <div class="relative flex items-start pt-12 pb-56 m-4 overflow-hidden bg-center bg-cover min-h-50-screen rounded-xl" style="background-image: url('../assets/img/curved-images/curved14.jpg')">
+            <div class="relative flex items-start pt-12 pb-56 m-4 overflow-hidden bg-center bg-cover min-h-50-screen rounded-xl" style="background-image: url('/img/curved-images/curved14.jpg')">
                 <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-dark-gray opacity-60"></span>
                 <div class="container z-10">
                     <div class="flex flex-wrap justify-center -mx-3">
@@ -47,24 +25,38 @@
                             <div class="p-6 mb-0 text-center bg-white border-b-0 rounded-t-2xl">
                                 <h5>Register Account</h5>
                             </div>
-
+                            <!-- Form Action -->
                             <div class="flex-auto p-6">
                                 <form action="/register" method="post" role="form text-left">
+                                    @csrf
                                     <div class="mb-4">
-                                        <input type="text" placeholder="Name" aria-label="Name" aria-describedby="email-addon" class="inputtype" />
+                                        <input type="text" name="name" placeholder="Name" aria-label="Name" aria-describedby="email-addon" class="inputtype" value="{{ old('name') }}" required />
                                     </div>
+                                    @error('name')
+                                    <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
+
+                                    @enderror
                                     <div class="mb-4">
-                                        <input type="email" class="inputtype" placeholder="Email" aria-label="Email" aria-describedby="email-addon" />
+                                        <input type="email" name="email" placeholder="Email" aria-label="Email" aria-describedby="email-addon" class="inputtype" value="{{ old('email') }}" required />
                                     </div>
+                                    @error('email')
+                                    <p class="text-red-500 text-xs italic -mt-3">{{ $message }} </p>
+
+                                    @enderror
                                     <div class="mb-4">
-                                        <input type="password" class="inputtype" placeholder="Password" aria-label="Password" aria-describedby="password-addon" />
+                                        <input type="password" name="password" placeholder="Password" aria-label="Password" aria-describedby="password-addon" class="inputtype" required value="{{ old('password') }}" />
                                     </div>
+                                    @error('password')
+                                    <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
+
+                                    @enderror
 
                                     <div class="text-center">
-                                        <button type="button" class="buttonsign">Sign up</button>
+                                        <button type="submit" class="buttonregist">Sign up</button>
                                     </div>
                                     <p class="mt-4 mb-0 leading-normal text-size-sm">Already have an account? <a href="/" class="font-bold text-slate-700">Sign in</a></p>
                                 </form>
+                                <!-- End Form Action -->
                             </div>
                         </div>
                     </div>

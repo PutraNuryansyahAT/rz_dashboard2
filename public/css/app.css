@@ -812,6 +812,14 @@ h6 {
   margin-top: 1.5rem;
 }
 
+.-mt-4 {
+  margin-top: -1rem;
+}
+
+.-mt-3 {
+  margin-top: -0.75rem;
+}
+
 .flex {
   display: flex;
 }
@@ -1094,6 +1102,11 @@ h6 {
   font-size: 0.875rem;
 }
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .text-size-lg {
   font-size: 1.125rem;
 }
@@ -1113,6 +1126,10 @@ h6 {
 
 .font-semibold {
   font-weight: 600;
+}
+
+.italic {
+  font-style: italic;
 }
 
 .leading-default {
@@ -1139,6 +1156,11 @@ h6 {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(245 57 57 / var(--tw-text-opacity));
 }
 
 .text-slate-700 {
