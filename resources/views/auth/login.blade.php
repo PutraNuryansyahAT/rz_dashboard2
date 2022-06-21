@@ -31,7 +31,7 @@
                                         </div>
 
                                         <div class="text-center">
-                                            <button type="button" class="buttonsign">Sign in</button>
+                                            <button type="button" class="buttonlogin">Sign in</button>
                                         </div>
                                     </form>
                                 </div>
