@@ -35,7 +35,7 @@
 
 </head>
 
-<body>
+<body class="m-0 font-sans antialiased font-normal bg-white text-start text-size-base leading-default text-slate-500">
     @yield('auth');
     <footer class="pt-14 pb-10  ">
         <div class="container">

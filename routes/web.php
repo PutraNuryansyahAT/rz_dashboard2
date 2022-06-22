@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
@@ -18,9 +19,15 @@ use App\Http\Controllers\RegisterController;
 */
 
 Route::get('/', [LoginController::class, 'login']);
+Route::post('/', [LoginController::class, 'authenticate']);
 
 Route::get('/register', [RegisterController::class, 'register']);
 Route::post('/register', [RegisterController::class, 'store']);
+
+Route::get('/home', function () {
+    return view('/home.home');
+});
+
 
 
 Route::get('/coba', function () {
