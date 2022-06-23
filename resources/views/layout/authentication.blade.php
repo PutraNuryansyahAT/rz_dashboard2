@@ -82,8 +82,8 @@
 </body>
 <!-- plugin for scrollbar  -->
 <script src="/js/plugins/perfect-scrollbar.min.js" async></script>
-<script src="/"></script>
+
 <!-- main script file  -->
-<script src="/js/soft-ui-dashboard-tailwind.js?v=1.0.2" async></script>
+<script src="/js/soft-ui-dashboard-tailwind.js" async></script>
 
 </html>

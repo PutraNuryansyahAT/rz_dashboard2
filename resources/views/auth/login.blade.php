@@ -3,7 +3,6 @@
 
 
 @section('auth')
-
 <main class="mt-0 transition-all duration-200 ease-soft-in-out">
     <section>
         <div class="relative flex items-center p-0 overflow-hidden bg-center bg-cover min-h-75-screen">
