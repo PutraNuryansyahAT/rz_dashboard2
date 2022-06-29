@@ -80,10 +80,6 @@
         </div>
     </footer>
 </body>
-<!-- plugin for scrollbar  -->
-<script src="/js/plugins/perfect-scrollbar.min.js" async></script>
 
-<!-- main script file  -->
-<script src="/js/soft-ui-dashboard-tailwind.js" async></script>
 
 </html>

@@ -23,6 +23,9 @@ Route::post('/', [LoginController::class, 'authenticate']);
 
 Route::get('/register', [RegisterController::class, 'register']);
 Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/dashboard', function () {
+    return view('/dashboard.index');
+});
 
 Route::get('/home', function () {
     return view('/home.home');
