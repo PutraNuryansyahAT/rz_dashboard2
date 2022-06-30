@@ -9,7 +9,6 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   presets: [],
-  darkMode: "class",
   theme: {
     screens: {
       sm: "576px",
