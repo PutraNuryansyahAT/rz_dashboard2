@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ViewController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
@@ -24,11 +24,15 @@ Route::post('/', [LoginController::class, 'authenticate']);
 Route::get('/register', [RegisterController::class, 'register']);
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/home', function () {
-    return view('/dashboard.index');
+Route::get('/home', [ViewController::class, 'viewhome']);
+
+Route::get('/settings', [ViewController::class, 'viewsetting']);
+
+Route::get('/transaksi', [ViewController::class, 'viewtransaksi']);
+
+Route::get('/donatur', function () {
+    return view('/dashboard.donatur');
 });
-
-
 
 
 Route::get('/coba', function () {
