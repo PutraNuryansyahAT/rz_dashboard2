@@ -28,8 +28,9 @@ Route::get('/home', [ViewController::class, 'viewhome']);
 
 Route::get('/settings', [ViewController::class, 'viewsetting']);
 
+/* Home*/
+Route::get('/affiliate', [ViewController::class, 'viewaffiliate']);
 Route::get('/transaksi', [ViewController::class, 'viewtransaksi']);
-
 Route::get('/donatur', function () {
     return view('/dashboard.donatur');
 });

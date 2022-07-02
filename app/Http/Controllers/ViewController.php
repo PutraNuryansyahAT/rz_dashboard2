@@ -41,6 +41,13 @@ class    ViewController extends Controller
         ]);
     }
 
+    public function viewaffiliate()
+    {
+        return view('/dashboard.affiliate', [
+            "title" => "Affiliate"
+        ]);
+    }
+
     public function viewtransaksi()
     {
         return view('/dashboard.transaksi', [

@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .inputtype{
     @apply
     focus:shadow-soft-primary-outline text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow 
@@ -20,4 +21,20 @@
 .buttonlogin{
     @apply
     inline-block w-full px-6 py-3 mt-6 mb-0 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-size-xs ease-soft-in tracking-tight-soft bg-gradient-cyan hover:scale-102 hover:shadow-soft-xs active:opacity-85
+}
+
+
+.cards{
+@apply
+    grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4
+}
+
+.cardhome{
+@apply
+flex items-center p-4 bg-white rounded-lg shadow-inner  border-2 hover:border-orange-400
+}
+
+.cardtext{
+    @apply
+    font-medium text-gray-600 mb-0
 }
