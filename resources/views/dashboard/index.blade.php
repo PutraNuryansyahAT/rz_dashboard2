@@ -4,7 +4,7 @@
 <main class="h-full overflow-y-auto">
     <div class="container px-6 mx-auto grid">
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Hello, Putra Nuryansyah Arsyi Tegara
+            Hello, {{ auth()->user()->name }}
         </h2>
         <!-- CTA -->
         <div class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-orange-500 bg-white-100 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">

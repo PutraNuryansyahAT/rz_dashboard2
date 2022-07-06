@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\RegisterController;
 
 
@@ -18,19 +19,24 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-Route::get('/', [LoginController::class, 'login']);
-Route::post('/', [LoginController::class, 'authenticate']);
+
+/*Register*/
 
 Route::get('/register', [RegisterController::class, 'register']);
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/home', [ViewController::class, 'viewhome']);
+/* Login and Logout */
+Route::get('/', [LoginController::class, 'login'])->name('login');
+Route::post('/', [LoginController::class, 'authenticate']);
+Route::post('logout', [LoginController::class, 'logout']);
 
-Route::get('/settings', [ViewController::class, 'viewsetting']);
-
+/* Update */
+Route::put('/update', [UpdateController::class, 'update']);
 /* Home*/
-Route::get('/affiliate', [ViewController::class, 'viewaffiliate']);
-Route::get('/transaksi', [ViewController::class, 'viewtransaksi']);
+Route::get('/home', [ViewController::class, 'viewhome'])->middleware('auth');;
+Route::get('/settings', [ViewController::class, 'viewsetting'])->middleware('auth');;
+Route::get('/affiliate', [ViewController::class, 'viewaffiliate'])->middleware('auth');
+Route::get('/transaksi', [ViewController::class, 'viewtransaksi'])->middleware('auth');
 Route::get('/donatur', function () {
     return view('/dashboard.donatur');
 });
