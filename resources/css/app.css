@@ -38,3 +38,8 @@ flex items-center p-4 bg-white rounded-lg shadow-inner  border-2 hover:border-or
     @apply
     font-medium text-gray-600 mb-0
 }
+
+.searchbar{
+    @apply 
+    rounded-lg border-orange-500 bg-black
+}

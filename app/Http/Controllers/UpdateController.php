@@ -22,7 +22,6 @@ class UpdateController extends Controller
             'norekening' => 'nullable',
             'atasnama' => 'nullable',
             'suratpernyataan' => 'nullable',
-
             'ktp' => 'nullable',
 
         ];

@@ -6,6 +6,7 @@ use App\Http\Controllers\ViewController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TransaksiController;
 
 
 /*
@@ -36,7 +37,12 @@ Route::put('/update', [UpdateController::class, 'update']);
 Route::get('/home', [ViewController::class, 'viewhome'])->middleware('auth');;
 Route::get('/settings', [ViewController::class, 'viewsetting'])->middleware('auth');;
 Route::get('/affiliate', [ViewController::class, 'viewaffiliate'])->middleware('auth');
-Route::get('/transaksi', [ViewController::class, 'viewtransaksi'])->middleware('auth');
+
+
+/* Transaksi */
+Route::get('/transaksi', [TransaksiController::class, 'viewtransaksi'])->middleware('auth');
+Route::get('/searchtransaksi', [TransaksiController::class, 'viewsearchtransaksi'])->middleware('auth');
+
 Route::get('/donatur', function () {
     return view('/dashboard.donatur');
 });

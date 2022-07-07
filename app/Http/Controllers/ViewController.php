@@ -47,11 +47,4 @@ class    ViewController extends Controller
             "title" => "Affiliate"
         ]);
     }
-
-    public function viewtransaksi()
-    {
-        return view('/dashboard.transaksi', [
-            "title" => "Transaksi"
-        ]);
-    }
 }

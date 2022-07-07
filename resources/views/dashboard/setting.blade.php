@@ -24,6 +24,7 @@
                 </div>
                 <br>
                 @endif
+
                 <label class="block text-sm">
                     <span class="text-black">Nama Lengkap</span>
                     <input class="block w-full mt-1 text-sm form-input " placeholder="Name" name="name" value="{{ old('name' , Auth::user()->name)}}" />
@@ -34,7 +35,7 @@
                 @enderror
                 <label class="block mt-4 text-sm">
                     <span class="text-black">Alamat Domisili</span>
-                    <textarea class="block w-full mt-1 text-sm form-textarea" rows="3" placeholder="Alamat" name="alamat">{{ old('alamat' , Auth::user()->alamat)}}</textarea>
+                    <textarea class="block w-full mt-1 text-sm form-textarea " rows="3" placeholder="Alamat" name="alamat">{{ old('alamat' , Auth::user()->alamat)}}</textarea>
                 </label>
                 @error('alamat')
                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
