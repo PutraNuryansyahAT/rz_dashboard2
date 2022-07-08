@@ -185,7 +185,7 @@
                     </ul>
                 </div>
             </header>
-            @yield('maincontent');
+            @yield('maincontent')
         </div>
     </div>
 </body>

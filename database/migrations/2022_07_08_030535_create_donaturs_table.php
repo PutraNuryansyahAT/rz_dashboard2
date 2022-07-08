@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('transaksi', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('affiliate');
+        Schema::create('donatur', function (Blueprint $table) {
+            $table->id('id_donatur');
+            $table->string('nama_lengkap');
+            $table->string('nomorhp');
+            $table->string('email');
+            $table->foreignId('affliate')->references('id')->on('users');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transaksi');
+        Schema::dropIfExists('donatur');
     }
 };

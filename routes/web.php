@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UpdateController;
+use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransaksiController;
 
 
@@ -38,14 +40,16 @@ Route::get('/home', [ViewController::class, 'viewhome'])->middleware('auth');;
 Route::get('/settings', [ViewController::class, 'viewsetting'])->middleware('auth');;
 Route::get('/affiliate', [ViewController::class, 'viewaffiliate'])->middleware('auth');
 
+/* Dashboard*/
+Route::get('/dashboard', [DashboardController::class, 'viewdashboard']);
 
 /* Transaksi */
 Route::get('/transaksi', [TransaksiController::class, 'viewtransaksi'])->middleware('auth');
 Route::get('/searchtransaksi', [TransaksiController::class, 'viewsearchtransaksi'])->middleware('auth');
 
-Route::get('/donatur', function () {
-    return view('/dashboard.donatur');
-});
+/* Donatur*/
+Route::get('/donatur', [DonaturController::class, 'viewdonatur'])->middleware('auth');
+
 
 
 Route::get('/coba', function () {

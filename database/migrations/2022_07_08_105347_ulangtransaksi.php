@@ -13,17 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('transaksi', function (Blueprint $table) {
-
+        Schema::create('transaksi', function (Blueprint $table) {
+            $table->id();
             $table->dateTime('tgldonasi');
+            $table->foreignId('donatur')->references('id_donatur')->on('donatur');
             $table->string('statusdonasi');
-            $table->string('donatur');
             $table->bigInteger('hp');
             $table->string('email');
             $table->string('atasnama');
             $table->string('program');
             $table->bigInteger('nominal');
-            $table->foreign('affiliate')->references('id')->on('users');
+            $table->foreignId('affiliate')->references('id')->on('users');
             $table->string('statuspembyaran');
         });
     }
@@ -35,8 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('transaksi', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('transaksi');
     }
 };

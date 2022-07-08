@@ -42,7 +42,7 @@
                 </div>
             </a>
             <!-- Card -->
-            <a href="#">
+            <a href="/donatur">
                 <div class="cardhome">
                     <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">

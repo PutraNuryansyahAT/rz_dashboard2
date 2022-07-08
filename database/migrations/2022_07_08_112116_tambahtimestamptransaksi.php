@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('transaksi', function (Blueprint $table) {
-            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamps();
         });
     }
 
