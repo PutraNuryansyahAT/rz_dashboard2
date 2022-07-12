@@ -20,27 +20,6 @@ class    ViewController extends Controller
         ]);
     }
 
-    public function viewfaq()
-    {
-        return view('/dashboard.faq', [
-            "title" => "Tittle"
-        ]);
-    }
-
-    public function viewfiqih()
-    {
-        return view('/dashboard.fiqih', [
-            "title" => "Fiqih"
-        ]);
-    }
-
-    public function viewprofile()
-    {
-        return view('/dashboard.profile', [
-            "title" => "Profile"
-        ]);
-    }
-
     public function viewaffiliate()
     {
         return view('/dashboard.affiliate', [

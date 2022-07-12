@@ -11,7 +11,7 @@ class DonaturController extends Controller
     {
         return view('/dashboard.donatur', [
             "title" => "Donatur",
-            'donatur' => Donatur::where('affliate', auth()->user()->id)->get()
+            'donatur' => Donatur::all()
         ]);
     }
 }

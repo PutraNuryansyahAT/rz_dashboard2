@@ -50,8 +50,6 @@ Route::get('/searchtransaksi', [TransaksiController::class, 'viewsearchtransaksi
 /* Donatur*/
 Route::get('/donatur', [DonaturController::class, 'viewdonatur'])->middleware('auth');
 
-
-
 Route::get('/coba', function () {
     return view('/test.index');
 });

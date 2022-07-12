@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('atasnama');
             $table->string('program');
             $table->bigInteger('nominal');
-            $table->foreignId('affiliate')->references('id')->on('users');
             $table->string('statuspembyaran');
         });
     }
