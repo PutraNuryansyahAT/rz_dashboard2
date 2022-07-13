@@ -8,21 +8,21 @@ class PagesController extends Controller
 {
     public function viewfaq()
     {
-        return view('/dashboard.pages.faq', [
+        return view('/pages.faq', [
             "title" => "Tittle"
         ]);
     }
 
     public function viewfiqih()
     {
-        return view('/dashboard.pages.fiqih', [
+        return view('/pages.fiqih', [
             "title" => "Fiqih"
         ]);
     }
 
     public function viewprofile()
     {
-        return view('/dashboard.pages.profile', [
+        return view('/pages.profile', [
             "title" => "Profile"
         ]);
     }

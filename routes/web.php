@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\RegisterController;
@@ -53,3 +54,8 @@ Route::get('/donatur', [DonaturController::class, 'viewdonatur'])->middleware('a
 Route::get('/coba', function () {
     return view('/test.index');
 });
+
+/* Pages */
+Route::get('/faq', [PagesController::class, 'viewfaq'])->middleware('auth');
+Route::get('/fiqih', [PagesController::class, 'viewfiqih'])->middleware('auth');
+Route::get('/profile', [PagesController::class, 'viewprofile'])->middleware('auth');
