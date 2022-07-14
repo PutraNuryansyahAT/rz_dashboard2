@@ -1,4 +1,3 @@
-@dd($total_transaksi->toArray());
 @extends('layout.header')
 @section('maincontent')
 
@@ -18,19 +17,19 @@
                         <th class="px-4 py-3">Total Fee</th>
                     </tr>
                 </thead>
-                @foreach ( $program as $programs )
+                @foreach ( $dashboard as $dashboards )
                 <tr class="text-gray-700 dark:text-gray-400">
                     <td class="px-4 py-3 text-sm">
                         {{$loop -> iteration}}
                     </td>
                     <td class="px-4 py-3 text-sm">
-                        {{ $programs->program }}
+                        {{ $dashboards->namaprogram}}
                     </td>
                     <td class="px-4 py-3 text-sm">
-                        {{ $programs->total_transaksi}}
+                        {{ $dashboards->total_transaksi}}
                     </td>
                     <td class="px-4 py-3 text-sm">
-                        {{ $programs->total_fee }}
+                        {{ $dashboards->total_fee }}
                     </td>
 
                     @endforeach
@@ -52,39 +51,6 @@
         </div>
 </main>
 
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script type="text/javascript">
-    var total_transaksi = <?php echo json_encode($total_transaksi) ?>;
-    var total_fee = <?php echo json_encode($total_fee) ?>;
 
-    var judul = <?php echo json_encode($title) ?>;
-
-    Highcharts.chart('grafik', {
-        title: {
-            text: "Grafik Total Transaksi"
-        },
-        xAxis: {
-            categories: judul
-        },
-        yAxis: {
-            title: {
-                text: "Nominal Transaksi"
-            }
-        },
-        plotOptions: {
-            series: {
-                allowPointSelect: true
-            }
-        },
-        series: [{
-            name: 'Total Tranaski',
-            data: total_transaksi
-        }, {
-            name: 'Total Fee',
-            data: total_fee
-        }],
-
-    });
-</script>
 
 @endsection
