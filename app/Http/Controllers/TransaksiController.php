@@ -3,24 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
+use App\Models\Program;
+use App\Models\Donatur;
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
 {
     public function viewtransaksi()
+
     {
         return view('/dashboard.transaksi', [
             "title" => "Transaksi",
-            'transaksi' => Transaksi::where('affiliate', auth()->user()->id)->get()
-
+            'transaksi' => Transaksi::where('affiliate', auth()->user()->id)->get(),
+            'program' => Program::all(),
+            'donatur' => Donatur::all()
         ]);
     }
 
     public function viewsearchtransaksi(Request $request)
     {
-        return view('dashboard.transaksi', [
+        return view('/dashboard.transaksi', [
             "title" => "Transaksi",
-            'transaksi' => Transaksi::wherebetween('tgldonasi', [$request->myDate1, $request->myDate2])->where('affiliate',  auth()->user()->id)->get()
+            'transaksi' => Transaksi::wherebetween('tgldonasi', [$request->myDate1, $request->myDate2])
+                ->orwhere('donatur', $request->namadonatur)
+                ->orwhere('program', $request->program)
+                ->orwhere('statuspembyaran', $request->status)
+                ->where('affiliate',  auth()->user()->id)->get(),
+            'program' => Program::all(),
+            'donatur' => Donatur::all()
         ]);
     }
 

@@ -1,3 +1,4 @@
+@dd($total_transaksi->toArray());
 @extends('layout.header')
 @section('maincontent')
 
