@@ -23,7 +23,7 @@ class    ViewController extends Controller
     public function viewaffiliate()
     {
         return view('/dashboard.affiliate', [
-            "title" => "Affiliate"
+            "title" => "Link Affiliator"
         ]);
     }
 }

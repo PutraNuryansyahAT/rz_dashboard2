@@ -2,13 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class UpdateController extends Controller
+
+class UserController extends Controller
 {
+    public function login()
+    {
+        return view('/auth.login');
+    }
+
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email:dns',
+            'password' => 'required'
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/dashboard');
+
+            //dilakukan regenearte untk menghalangi atau menutup celah yang kemungkinan terjadi
+
+        }
+
+        return back()->with('loginError', 'Login Failed');
+    }
+
+    public function logout(Request $request)
+    {
+
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    }
 
     public function update(Request $request)
     {

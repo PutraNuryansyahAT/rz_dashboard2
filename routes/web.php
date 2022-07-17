@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PagesController;
@@ -29,28 +30,26 @@ use App\Http\Controllers\TransaksiController;
 Route::get('/register', [RegisterController::class, 'register']);
 Route::post('/register', [RegisterController::class, 'store']);
 
-/* Login and Logout */
-Route::get('/', [LoginController::class, 'login'])->name('login');
-Route::post('/', [LoginController::class, 'authenticate']);
-Route::post('logout', [LoginController::class, 'logout']);
+/* User */
+Route::get('/', [UserController::class, 'login'])->name('login');
+Route::post('/', [UserController::class, 'authenticate']);
+Route::post('logout', [UserController::class, 'logout']);
+Route::put('/update', [UserController::class, 'update']);
 
 /* Update */
-Route::put('/update', [UpdateController::class, 'update']);
-/* Home*/
-Route::get('/home', [ViewController::class, 'viewhome'])->middleware('auth');;
-Route::get('/settings', [ViewController::class, 'viewsetting'])->middleware('auth');;
+
+
+/* SideBar*/
+Route::get('/dashboard', [DashboardController::class, 'viewdashboard'])->middleware('auth');
+Route::get('/transaksi', [TransaksiController::class, 'viewtransaksi'])->middleware('auth');
+Route::get('/donatur', [DonaturController::class, 'viewdonatur'])->middleware('auth');
+Route::get('/settings', [ViewController::class, 'viewsetting'])->middleware('auth');
 Route::get('/affiliate', [ViewController::class, 'viewaffiliate'])->middleware('auth');
 
-/* Dashboard*/
-Route::get('/dashboard', [DashboardController::class, 'viewdashboard']);
-
 /* Transaksi */
-Route::get('/transaksi', [TransaksiController::class, 'viewtransaksi'])->middleware('auth');
 Route::get('/searchtransaksi', [TransaksiController::class, 'viewsearchtransaksi'])->middleware('auth');
 
 /* Donatur*/
-Route::get('/donatur', [DonaturController::class, 'viewdonatur'])->middleware('auth');
-
 Route::get('/coba', function () {
     return view('/test.index');
 });

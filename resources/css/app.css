@@ -43,3 +43,8 @@ flex items-center p-4 bg-white rounded-lg shadow-inner  border-2 hover:border-or
     @apply 
     rounded-lg border-orange-500 bg-black
 }
+
+.biru{
+    @apply
+    text-blue-500
+}

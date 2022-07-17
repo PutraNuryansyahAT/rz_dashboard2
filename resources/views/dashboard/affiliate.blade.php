@@ -1,5 +1,16 @@
 @extends('layout.header')
 @section('maincontent')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    function copylink(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
+</script>
+
 <main class="h-full pb-16 overflow-y-auto">
     <div class="container px-6 mx-auto grid">
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
@@ -15,7 +26,14 @@
             </h2>
             <div class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-black bg-gray-50 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
                 <span>
-                    Landing Page : https://skrzjne.rumahzakat.org/?source=1032013001006
+                    Landing Page : <a id="p1" class="biru" href="https://skrzjne.rumahzakat.org/?source={{ auth()->user()->id }}" title="link generator"> https://skrzjne.rumahzakat.org/?source={{ auth()->user()->id }}</a>
+
+                    <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p1')">
+                        <svg class="w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
+
                 </span>
             </div>
 
@@ -26,10 +44,19 @@
             <div class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-black bg-gray-50 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
 
                 <span>
-                    Landing Page : https://sahabatkebaikan.rumahzakat.org/?source=1032013001006 <br>
+                    Landing Page : <a id="p2" class="biru" href="https://sahabatkebaikan.rumahzakat.org/?source={{ auth()->user()->id }}"> https://sahabatkebaikan.rumahzakat.org/?source={{ auth()->user()->id }} </a>
+                    <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p2')">
+                        <svg class="w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button> <br>
 
-                    Cek Donasi : https://www.rumahzakat.org/donasi?source=1032013001006
-
+                    Cek Donasi : <a class="biru" id="p3" href=" https://www.rumahzakat.org/donasi?source={{ auth()->user()->id }}"> https://www.rumahzakat.org/donasi?source={{ auth()->user()->id }}</a>
+                    <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p3')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                 </span>
 
             </div>
@@ -41,10 +68,19 @@
             <div class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-black bg-gray-50 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
 
                 <span>
-                    Landing Page : https://infak.id/?source=1032013001006
+                    Landing Page :<a class="biru" id="p4" href=" https://infak.id/?source={{ auth()->user()->id }}"> https://infak.id/?source={{ auth()->user()->id }}</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p4')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
+
                     <br>
 
-                    Cek Donasi : https://mitra.rumahzakat.org/infakid/?source=1032013001006
+                    Cek Donasi :<a class="biru" id="p5" href="https://mitra.rumahzakat.org/infakid/?source={{ auth()->user()->id }}"> https://mitra.rumahzakat.org/infakid/?source={{ auth()->user()->id }}</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p5')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
 
                 </span>
 
@@ -57,20 +93,48 @@
             <div class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-black bg-gray-50 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
 
                 <span>
-                    Berbagi Buka Puasa : https://infak.id/?source=1032013001006 <br>
+                    Berbagi Buka Puasa :<a class="biru" id="p6" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#berbagi-buka-puasa">Berbagi Buka Puasa : https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#berbagi-buka-puasa</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p6')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button> <br>
 
-                    Kado Lebaran Yatim : https://www.rumahzakat.org/donasi/?source=1032013001006#kado-lebaran-yatim
+                    Kado Lebaran Yatim :<a class="biru" id="p7" href="https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#kado-lebaran-yatim"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#kado-lebaran-yatim</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p7')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    Bingkisan Lebaran : https://www.rumahzakat.org/donasi/?source=1032013001006#bingkisan-lebaran-keluarga
+                    Bingkisan Lebaran :<a class="biru" id="p8" href="https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#bingkisan-lebaran-keluarga">https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#bingkisan-lebaran-keluarga</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('p8')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
-                    Bebas Hutang : https://www.rumahzakat.org/donasi/?source=1032013001006#ramadhan-bebas-hutang
+                    Bebas Hutang :<a class="biru" id="p9" href="https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#ramadhan-bebas-hutang"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#ramadhan-bebas-hutang</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p9')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
-                    Zakat Fitrah : https://www.rumahzakat.org/donasi/?source=1032013001006#zakat-fithrah
+                    Zakat Fitrah :<a class="biru" id="p10" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#zakat-fithrah"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#zakat-fithrah </a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p10')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
-                    Fidyah : https://www.rumahzakat.org/donasi/?source=1032013001006#fidyah
+                    Fidyah :<a class="biru" id="p11" href="https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#fidyah"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#fidyah</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p11')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
-                    Syiar Quran : https://www.rumahzakat.org/donasi/?source=1032013001006#syiar-quran
+                    Syiar Quran :<a class="biru" id="p12" href="https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#syiar-quran"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#syiar-quran</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p12')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                 </span>
 
             </div>
@@ -82,23 +146,46 @@
             <div class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-black bg-gray-50 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
 
                 <span>
-                    SQ Kambing Kornet : https://infak.id/?source=1032013001006 <br>
+                    SQ Kambing Kornet :<a class="biru" id="p13" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#qurban-kambing-kornet"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#qurban-kambing-kornet</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p13')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button><br>
 
-                    SQ Sapi 1/7 Kornet : https://www.rumahzakat.org/donasi/?source=1032013001006#kado-lebaran-yatim
+                    SQ Sapi 1/7 Kornet :<a class="biru" id="p14" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#qurban-1-per-7-sapi-kornet"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#qurban-1-per-7-sapi-kornet</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p14')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    SQ Sapi Kornet : https://www.rumahzakat.org/donasi/?source=1032013001006#bingkisan-lebaran-keluarga
+                    SQ Sapi Kornet :<a class="biru" id="p15" href="  https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#qurban-sapi-kornet"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#qurban-sapi-kornet
+                    </a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p15')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button><br>
+
+                    SQ Kambing Rendang :<a class="biru" id="p16" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#qurban-kambing-rendang"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#qurban-kambing-rendang</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p16')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    SQ Kambing Rendang : https://www.rumahzakat.org/donasi/?source=1032013001006#ramadhan-bebas-hutang
+                    SQ Sapi 1/7 Rendang :<a class="biru" id="p17" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#qurban-1-per-7-sapi-rendang"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#qurban-1-per-7-sapi-rendang</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p17')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    SQ Sapi 1/7 Rendang : https://www.rumahzakat.org/donasi/?source=1032013001006#zakat-fithrah
-                    <br>
+                    SQ Sapi Rendang:<a class="biru" id="p18" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#qurban-sapi-rendang"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#qurban-sapi-rendang</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p18')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
 
-                    SQ Sapi Rendang: https://www.rumahzakat.org/donasi/?source=1032013001006#fidyah
-                    <br>
-                    Syiar Quran : https://www.rumahzakat.org/donasi/?source=1032013001006#syiar-quran
                 </span>
 
             </div>
@@ -110,12 +197,24 @@
             <div class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-black bg-gray-50 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
 
                 <span>
-                    Kambing : https://infak.id/?source=1032013001006 <br>
+                    Kambing :<a class="biru" id="p19" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#desaku-berqurban-kambing"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#desaku-berqurban-kambing</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p19')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button><br>
 
-                    Sapi 1/7: https://www.rumahzakat.org/donasi/?source=1032013001006#kado-lebaran-yatim
+                    Sapi 1/7:<a class="biru" id="p20" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#desaku-berqurban-1-per-7-sapi"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#desaku-berqurban-1-per-7-sapi</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p20')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    Sapi : https://www.rumahzakat.org/donasi/?source=1032013001006#bingkisan-lebaran-keluarga
+                    Sapi :<a class="biru" id="p21" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#desaku-berqurban-sapi"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#desaku-berqurban-sapi</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p21')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
                 </span>
 
@@ -128,15 +227,31 @@
             <div class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-black bg-gray-50 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
 
                 <span>
-                    Zakat Penghasilan : https://infak.id/?source=1032013001006 <br>
+                    Zakat Penghasilan :<a class="biru" id="p22" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#zakat-penghasilan"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#zakat-penghasilan</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p22')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button><br>
 
-                    Zakat Emas: https://www.rumahzakat.org/donasi/?source=1032013001006#kado-lebaran-yatim
+                    Zakat Emas:<a class="biru" id="p23" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#zakat-emas"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#zakat-emas</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p23')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    Zakat Perdagangan : https://www.rumahzakat.org/donasi/?source=1032013001006#bingkisan-lebaran-keluarga
-                    <br>
+                    Zakat Perdagangan :<a class="biru" id="p24" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#zakat-perdagangan"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#zakat-perdagangan
+                    </a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p24')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button><br>
 
-                    Zakat Tabungan : https://www.rumahzakat.org/donasi/?source=1032013001006#bingkisan-lebaran-keluarga
+                    Zakat Tabungan :<a class="biru" id="p25" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#zakat-tabungan"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#zakat-tabungan</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p25')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
                 </span>
 
@@ -149,13 +264,25 @@
             <div class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-black bg-gray-50 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
 
                 <span>
-                    Berbagi Makanan Keluarga : https://infak.id/?source=1032013001006
+                    Berbagi Makanan Keluarga :<a class="biru" id="p26" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#berbagi-makan-keluarga"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#berbagi-makan-keluarga</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p26')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    Bingkisan Yatim Dhuafa: https://www.rumahzakat.org/donasi/?source=1032013001006#kado-lebaran-yatim
+                    Bingkisan Yatim Dhuafa:<a class="biru" id="p27" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#bingkisan-yatim-dhuafa"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#bingkisan-yatim-dhuafa</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p27')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    Bingkisan Keluarga Pra Sejahtera : https://www.rumahzakat.org/donasi/?source=1032013001006#bingkisan-lebaran-keluarga
+                    Bingkisan Keluarga Pra Sejahtera :<a class="biru" id="p28" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#bingkisan-keluarga-pra-sejahtera"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#bingkisan-keluarga-pra-sejahtera</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p28')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
 
@@ -170,56 +297,99 @@
             <div class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-black bg-gray-50 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
 
                 <span>
-                    Bencana Nasional : https://infak.id/?source=1032013001006
+                    Bencana Nasional :<a class="biru" id="p29" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#bencana-nasional"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#bencana-nasional</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p29')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    Bingkisan Untuk Adik Pengungsi: https://www.rumahzakat.org/donasi/?source=1032013001006#kado-lebaran-yatim
+                    Bingkisan Untuk Adik Pengungsi:<a class="biru" id="p30" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#bingkisan-untuk-adik-pengungsi"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#bingkisan-untuk-adik-pengungsi</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p30')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    Desa Berdaya: https://www.rumahzakat.org/donasi/?source=1032013001006#kado-lebaran-yatim
+                    Desa Berdaya:<a class="biru" id="p31" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#desa-berdaya"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#desa-berdaya</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p31')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    Siaga Pangan: https://www.rumahzakat.org/donasi/?source=1032013001006#kado-lebaran-yatim
+                    Siaga Pangan:<a class="biru" id="p32" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#siaga-pangan"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#siaga-pangan</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p32')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    Bantuan Kemanusiaan: https://www.rumahzakat.org/donasi/?source=1032013001006#kado-lebaran-yatim
+                    Bantuan Kemanusiaan:<a class="biru" id="p33" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#bantuan-kemanusiaan"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#bantuan-kemanusiaan</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p33')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    Wakaf Produktif: https://www.rumahzakat.org/donasi/?source=1032013001006#kado-lebaran-yatim
+                    Wakaf Produktif:<a class="biru" id="p34" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#wakaf-produktif"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#wakaf-produktif </a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p34')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    Infak: https://www.rumahzakat.org/donasi/?source=1032013001006#kado-lebaran-yatim
+                    Infak:<a class="biru" id="p35" href="  https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#infaq"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#infaq</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p35')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    Sekolah Juara: https://www.rumahzakat.org/donasi/?source=1032013001006#kado-lebaran-yatim
+                    Sekolah Juara:<a class="biru" id="p36" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#sekolah-juara"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#sekolah-juara</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p36')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    Klinik: https://www.rumahzakat.org/donasi/?source=1032013001006#kado-lebaran-yatim
+                    Klinik:<a class="biru" id="p37" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#klinik-cita-sehat"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#klinik-cita-sehat</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p37')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    Palestina: https://www.rumahzakat.org/donasi/?source=1032013001006#kado-lebaran-yatim
+                    Palestina:<a class="biru" id="p38" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#palestina"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#palestina</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p38')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    Bencana Nasional: https://www.rumahzakat.org/donasi/?source=1032013001006#kado-lebaran-yatim
+                    Bencana Nasional:<a class="biru" id="p39" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#bencana-nasional"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#bencana-nasional</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p39')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    APD Tim Medis COVID-19: https://www.rumahzakat.org/donasi/?source=1032013001006#kado-lebaran-yatim
+                    APD Tim Medis COVID-19:<a class="biru" id="p40" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#apd-tim-medis-covid19"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#apd-tim-medis-covid19</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p40')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
-                    Lindungi Relawan COVID-19: https://www.rumahzakat.org/donasi/?source=1032013001006#kado-lebaran-yatim
+                    Lindungi Relawan COVID-19:<a class="biru" id="p41" href=" https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#lindungi-relawan-covid19"> https://www.rumahzakat.org/donasi/?source={{ auth()->user()->id }}#lindungi-relawan-covid19</a><button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-full active:bg-orange-1 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" aria-label="Edit" onclick="copylink('#p41')">
+                        <svg class=" w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                        </svg>
+                    </button>
                     <br>
 
                 </span>
             </div>
-
-
-
-
-
-
-
-
-
         </div>
 
 
