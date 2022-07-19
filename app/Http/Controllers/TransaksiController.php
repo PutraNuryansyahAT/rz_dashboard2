@@ -7,6 +7,7 @@ use App\Models\Program;
 use App\Models\Donatur;
 use Illuminate\Http\Request;
 
+
 class TransaksiController extends Controller
 {
     public function viewtransaksi()
@@ -17,7 +18,24 @@ class TransaksiController extends Controller
             'transaksi' => Transaksi::where('affiliate', auth()->user()->id)->get(),
             'program' => Program::all(),
             'donatur' => Donatur::all()
+            // 'donaturauto' => Donatur::select('nama_lengkap', 'id_donatur')->where('nama_lengkap', 'LIKE', "%{$query}%")
         ]);
+    }
+
+    function fetch(Request $request)
+    {
+        if ($request->get('query')) {
+            $query = $request->get('query');
+            $data = Donatur::select('nama_lengkap', 'id_donatur')->where('nama_lengkap', 'LIKE', "%{$query}%")->get();
+            $output = '<ul class="dropdown-menu" style="display:block; position:relative;width:100%;">';
+            foreach ($data as $row) {
+                $output .= '
+                <li><a class="dropdown-item" href="#">' . $row->nama_lengkap . '</a></li>
+                ';
+            }
+            $output .= '</ul>';
+            echo $output;
+        }
     }
 
     public function viewsearchtransaksi(Request $request)

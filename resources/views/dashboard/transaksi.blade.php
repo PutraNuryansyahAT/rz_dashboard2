@@ -21,17 +21,41 @@
                     Nama Donatur
                     <div class="relative">
                         <label class="block text-sm">
-                            <select class="block w-64 mt-1 text-sm ml-16 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple " name="namadonatur">
-                                <option class="text-gray-500">--Nama Donatur--</option>
-                                @foreach ($donatur as $donaturs )
-                                <option value='{{$donaturs->id_donatur }}'> {{ $donaturs->nama_lengkap  }}</option>
-                                @endforeach
-                            </select>
+                            <input class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input" placeholder="Jane Doe" type="text" name="namadonatur" id="namadonatur" />
+                            <div id="countryList"></div>
+                            <script>
+                                $(document).ready(function() {
+                                    $('#namadonatur').keyup(function() {
+                                        var query = $(this).val();
+                                        if (query != '') {
+                                            var _token = $('input[name="_token"]').val();
+                                            $.ajax({
+                                                url: "{{ route('autocomplete.fetch') }}",
+                                                method: "POST",
+                                                data: {
+                                                    query: query,
+                                                    _token: _token
+                                                },
+                                                success: function(data) {
+                                                    $('#countryList').fadeIn();
+                                                    $('#countryList').html(data);
+                                                }
+                                            });
+                                        }
+                                    });
+                                    $(document).on('click', 'li', function() {
+                                        $('#namadonatur').val($(this).text());
+                                        $('#countryList').fadeOut();
+                                    });
+
+                                });
+                            </script>
                         </label>
-                        <button class="absolute inset-y-0 px-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-l-md active:bg-orange-200 hover:bg-orange-500 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" type="submit">
-                            Search
-                        </button>
+
                     </div>
+                    <button class="px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                        Small
+                    </button>
                     <label class="text-sm">
                         <select class="block w-64 mt-1 text-sm ml-16 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple " name="program">
                             <option class="text-gray-500">--Program--</option>
