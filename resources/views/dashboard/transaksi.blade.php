@@ -21,36 +21,31 @@
                     Nama Donatur
                     <div class="relative">
                         <label class="block text-sm">
-                            <input class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input" placeholder="Jane Doe" type="text" name="namadonatur" id="namadonatur" />
-                            <div id="countryList"></div>
-                            <script>
-                                $(document).ready(function() {
-                                    $('#namadonatur').keyup(function() {
-                                        var query = $(this).val();
-                                        if (query != '') {
-                                            var _token = $('input[name="_token"]').val();
-                                            $.ajax({
-                                                url: "{{ route('autocomplete.fetch') }}",
-                                                method: "POST",
-                                                data: {
-                                                    query: query,
-                                                    _token: _token
-                                                },
-                                                success: function(data) {
-                                                    $('#countryList').fadeIn();
-                                                    $('#countryList').html(data);
-                                                }
-                                            });
+                            <input class="block w-70 mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input" placeholder="Jane Doe" type="text" name="namadonatur" id="search" />
+                        </label>
+                        <script type="text/javascript">
+                            var path = "{{ route('autocomplete') }}";
+                            $("#search").autocomplete({
+                                source: function(request, response) {
+                                    $.ajax({
+                                        url: path,
+                                        type: 'GET',
+                                        dataType: "json",
+                                        data: {
+                                            search: request.term
+                                        },
+                                        success: function(data) {
+                                            response(data);
                                         }
                                     });
-                                    $(document).on('click', 'li', function() {
-                                        $('#namadonatur').val($(this).text());
-                                        $('#countryList').fadeOut();
-                                    });
-
-                                });
-                            </script>
-                        </label>
+                                },
+                                select: function(event, ui) {
+                                    $('#search').val(ui.item.label);
+                                    console.log(ui.item);
+                                    return false;
+                                }
+                            });
+                        </script>
 
                     </div>
                     <button class="px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">

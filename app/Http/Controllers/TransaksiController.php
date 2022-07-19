@@ -22,24 +22,23 @@ class TransaksiController extends Controller
         ]);
     }
 
-    function fetch(Request $request)
+    public function autocomplete(Request $request)
     {
-        if ($request->get('query')) {
-            $query = $request->get('query');
-            $data = Donatur::select('nama_lengkap', 'id_donatur')->where('nama_lengkap', 'LIKE', "%{$query}%")->get();
-            $output = '<ul class="dropdown-menu" style="display:block; position:relative;width:100%;">';
-            foreach ($data as $row) {
-                $output .= '
-                <li><a class="dropdown-item" href="#">' . $row->nama_lengkap . '</a></li>
-                ';
-            }
-            $output .= '</ul>';
-            echo $output;
-        }
+        // $res = User::select("name")
+        //     ->where("name", "LIKE", "%{$request->term}%")
+        //     ->get();
+
+        // return response()->json($res);
+        $data = donatur::select("id_donatur", "nama_lengkap as value")
+            ->where('nama_lengkap', 'LIKE', '%' . $request->get('search') . '%')
+            ->get();
+
+        return response()->json($data);
     }
 
     public function viewsearchtransaksi(Request $request)
     {
+
         return view('/dashboard.transaksi', [
             "title" => "Transaksi",
             'transaksi' => Transaksi::wherebetween('tgldonasi', [$request->myDate1, $request->myDate2])
