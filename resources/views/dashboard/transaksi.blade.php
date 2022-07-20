@@ -21,7 +21,8 @@
                     Nama Donatur
                     <div class="relative">
                         <label class="block text-sm">
-                            <input class="block w-70 mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input" placeholder="Jane Doe" type="text" name="namadonatur" id="search" />
+                            <input class="block w-70 mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input" placeholder="Jane Doe" type="text" name="nama" id="search" />
+                            <input type="hidden" id="valBox" name="namadonatur" />
                         </label>
                         <script type="text/javascript">
                             var path = "{{ route('autocomplete') }}";
@@ -41,6 +42,7 @@
                                 },
                                 select: function(event, ui) {
                                     $('#search').val(ui.item.label);
+                                    $('#valBox').val(ui.item.value);
                                     console.log(ui.item);
                                     return false;
                                 }

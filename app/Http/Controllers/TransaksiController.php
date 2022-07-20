@@ -29,7 +29,7 @@ class TransaksiController extends Controller
         //     ->get();
 
         // return response()->json($res);
-        $data = donatur::select("id_donatur", "nama_lengkap as value")
+        $data = donatur::select("id_donatur as value", "nama_lengkap as label")
             ->where('nama_lengkap', 'LIKE', '%' . $request->get('search') . '%')
             ->get();
 
