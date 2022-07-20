@@ -13,9 +13,11 @@ class TransaksiController extends Controller
     public function viewtransaksi()
 
     {
+        $query =  Transaksi::query();
+        // $donatur = $query->where('donatur', 5);
         return view('/dashboard.transaksi', [
             "title" => "Transaksi",
-            'transaksi' => Transaksi::where('affiliate', auth()->user()->id)->get(),
+            'transaksi' => $query->where('affiliate', auth()->user()->id)->get(),
             'program' => Program::all(),
             'donatur' => Donatur::all()
             // 'donaturauto' => Donatur::select('nama_lengkap', 'id_donatur')->where('nama_lengkap', 'LIKE', "%{$query}%")
@@ -38,14 +40,24 @@ class TransaksiController extends Controller
 
     public function viewsearchtransaksi(Request $request)
     {
+        $query = Transaksi::query();
 
+        if ($request->filled('myDate1') or  $request->filled('myDate2')) {
+            $query = $query->wherebetween('tgldonasi', [$request->myDate1, $request->myDate2]);
+        }
+        if ($request->filled('namadonatur')) {
+            $query = $query->where('donatur', $request->namadonatur);
+        }
+        if ($request->input('program') != "--Program--") {
+            $query = $query->where('program', $request->program);
+        }
+        if ($request->filled('status')) {
+            $query = $query = $query->where('statuspembyaran', $request->status);
+        }
         return view('/dashboard.transaksi', [
             "title" => "Transaksi",
-            'transaksi' => Transaksi::wherebetween('tgldonasi', [$request->myDate1, $request->myDate2])
-                ->orwhere('donatur', $request->namadonatur)
-                ->orwhere('program', $request->program)
-                ->orwhere('statuspembyaran', $request->status)
-                ->where('affiliate',  auth()->user()->id)->get(),
+            'transaksi' => $query
+                ->where('affiliate', auth()->user()->id)->get(),
             'program' => Program::all(),
             'donatur' => Donatur::all()
         ]);

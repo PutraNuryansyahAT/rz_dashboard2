@@ -48,8 +48,6 @@ Route::get('/affiliate', [ViewController::class, 'viewaffiliate'])->middleware('
 
 /* Transaksi */
 Route::get('/searchtransaksi', [TransaksiController::class, 'viewsearchtransaksi'])->middleware('auth');
-Route::get('/ajax-autocomplete-search', [TransaksiController::class, 'selectSearch']);
-// route ke autocomplete
 Route::get('/autocomplete', [TransaksiController::class, 'autocomplete'])->name('autocomplete');
 
 /* Donatur*/
