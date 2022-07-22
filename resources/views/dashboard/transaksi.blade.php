@@ -18,10 +18,10 @@
                 </div>
                 <!-- Nama Donatur bar -->
                 <div class="p-3 ">
-                    Nama Donatur
+
                     <div class="relative">
                         <label class="block text-sm">
-                            <input class="block w-70 mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input" placeholder="Jane Doe" type="text" name="nama" id="search" />
+                            <input class="block w-70 mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input" placeholder="--Nama Donatur--" type="text" name="nama" id="search" />
                             <input type="hidden" id="valBox" name="namadonatur" />
                         </label>
                         <script type="text/javascript">
@@ -50,17 +50,18 @@
                         </script>
 
                     </div>
-                    <button class="px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple" type="submit">
-                        Small
-                    </button>
+
                     <label class="text-sm">
-                        <select class="block w-64 mt-1 text-sm ml-16 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple " name="program">
+                        <select class="block w-64 mt-1 text-sm  form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple " name="program">
                             <option class="text-gray-500">--Program--</option>
                             @foreach ($program as $programs )
                             <option value='{{$programs->id }}'> {{ $programs->namaprogram  }}</option>
                             @endforeach
                         </select>
                     </label>
+                    <button class="px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-md active:bg-orange-500 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" type="submit">
+                        Search
+                    </button>
                 </div>
 
                 <div class="flex p-3 border rounded-md  bg-gray-200">
