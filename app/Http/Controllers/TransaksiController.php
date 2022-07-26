@@ -21,7 +21,9 @@ class TransaksiController extends Controller
         // $donatur = $query->where('donatur', 5);
         return view('/dashboard.transaksi', [
             "title" => "Transaksi",
-            'transaksi' => Transaksi::where('affiliate', auth()->user()->id)->paginate(8),
+            'transaksi' => Transaksi::where('affiliate', auth()->user()->id)
+                ->sortable()
+                ->paginate(8),
             'program' => Program::all(),
             'donatur' => Donatur::all()
             // 'donaturauto' => Donatur::select('nama_lengkap', 'id_donatur')->where('nama_lengkap', 'LIKE', "%{$query}%")
@@ -57,7 +59,7 @@ class TransaksiController extends Controller
         return view('/dashboard.transaksi', [
             "title" => "Transaksi",
             'transaksi' => $query
-                ->where('affiliate', auth()->user()->id)->paginate(2)->appends($request->all()),
+                ->where('affiliate', auth()->user()->id)->sortable()->paginate(2)->appends($request->all()),
 
             'program' => Program::all(),
             'donatur' => Donatur::all()

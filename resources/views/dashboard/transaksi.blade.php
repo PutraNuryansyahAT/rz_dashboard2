@@ -78,14 +78,14 @@
                 <thead>
                     <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b  bg-gray-500  ">
                         <th class="px-4 py-3">No</th>
-                        <th class="px-4 py-3">Tgl Donasi</th>
-                        <th class="px-4 py-3">Status Donatur</th>
-                        <th class="px-4 py-3">Donatur</th>
+                        <th class="px-4 py-3">@sortablelink('tgldonasi','Tgl Donasi') </th>
+                        <th class="px-4 py-3">@sortablelink('statusdonatur','Status Donatur')</th>
+                        <th class="px-4 py-3">@sortablelink('donatur','Donatur')</th>
                         <th class="px-4 py-3">Hp</th>
                         <th class="px-4 py-3">Email</th>
-                        <th class="px-4 py-3">Atas Nama</th>
-                        <th class="px-4 py-3">Program</th>
-                        <th class="px-4 py-3">Nominal</th>
+                        <th class="px-4 py-3">@sortablelink('atasnama','Nama') </th>
+                        <th class="px-4 py-3">@sortablelink('program','Program')</th>
+                        <th class="px-4 py-3">@sortablelink('nominal','Nominal')</th>
                         <th class="px-4 py-3">Affiliate</th>
                         <th class="px-4 py-3">Status Pembayaran</th>
                     </tr>
