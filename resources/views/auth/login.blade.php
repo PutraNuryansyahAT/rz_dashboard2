@@ -12,10 +12,6 @@
                         <div class="relative flex flex-col min-w-0 mt-32 break-words bg-transparent border-0 shadow-none rounded-2xl bg-clip-border">
                             <div class="p-6 pb-0 mb-0 bg-transparent border-b-0 rounded-t-2xl">
                                 <h3 class="relative z-10 font-bold text-transparent bg-gradient-to-r from-gray-400 to-orange-1 bg-clip-text">Welcome back</h3>
-
-
-
-
                                 @if (session()->has('success'))
                                 <div class="bg-gradient-to-r from-green-500 border-t border-b border-green-100 text-white px-4 py-3 rounded" role="alert">
                                     <p class="font-bold my-1">{{ session('success') }}</p>
