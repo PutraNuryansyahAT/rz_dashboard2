@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('karyawan', function (Blueprint $table) {
-            $table->id('nip_karyawan');
-            $table->string('first_name');
-            $table->string('last_name');
+        Schema::create('data_amil', function (Blueprint $table) {
+            $table->id('id_amil');
+            $table->string('nama_lengkap');
+            $table->bigInteger('nomor_hp');
             $table->string('email')->unique();
-            $table->timestamps();
+            $table->boolean('aktiv');
+            $table->$table->timestamps();
         });
     }
 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('karyawan');
+        Schema::dropIfExists('data_amil');
     }
 };
