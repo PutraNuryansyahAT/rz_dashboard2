@@ -27,20 +27,32 @@
                         <div class="flex-auto p-6">
                             <form action="/register" method="post" role="form text-left">
                                 @csrf
-                                <div class="mb-4">
-                                    <input type="text" name="name" placeholder="Name" aria-label="Name" aria-describedby="email-addon" class="inputtype" value="{{ old('name') }}" required />
+                                @if (session()->has('registError'))
+                                <div class="bg-gradient-red border-t border-b border-red-500 text-white px-4 py-1 rounded mb-4" role="alert">
+                                    <p class="font-bold my-1">{{ session('registError') }}</p>
                                 </div>
-                                @error('name')
+                                @endif
+
+                                <div class="mb-4">
+                                    <select class="inputtype " name="id_amil">
+                                        <option value="" disabled selected hidden>-- Pilih Amil --</option>
+                                        @foreach ($amil as $amils )
+                                        <option value='{{$amils->id_amil }}'>{{$amils->nama_lengkap }} - {{ $amils->email  }}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                                @error('id_amil')
                                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
-
                                 @enderror
+
                                 <div class="mb-4">
-                                    <input type="email" name="email" placeholder="Email" aria-label="Email" aria-describedby="email-addon" class="inputtype" value="{{ old('email') }}" required />
+                                    <input type="text" name="username" placeholder="Username" aria-label="Name" aria-describedby="email-addon" class="inputtype" value="{{ old('username') }}" required />
                                 </div>
-                                @error('email')
-                                <p class="text-red-500 text-xs italic -mt-3">{{ $message }} </p>
-
+                                @error('username')
+                                <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
                                 @enderror
+
                                 <div class="mb-4">
                                     <input type="password" name="password" placeholder="Password" aria-label="Password" aria-describedby="password-addon" class="inputtype" required value="{{ old('password') }}" />
                                 </div>
@@ -48,6 +60,8 @@
                                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
 
                                 @enderror
+                                <input type="text" name="aktiv" value="1" hidden>
+
 
                                 <div class="text-center">
                                     <button type="submit" class="buttonregist">Sign up</button>

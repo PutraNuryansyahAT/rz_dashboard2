@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('program', function (Blueprint $table) {
+        Schema::create('Program', function (Blueprint $table) {
             $table->id('id_program');
             $table->boolean('having_child');
-            $table->booelan('status');
+            $table->boolean('status');
             $table->timestamp('date_created')->useCurrent();
         });
     }

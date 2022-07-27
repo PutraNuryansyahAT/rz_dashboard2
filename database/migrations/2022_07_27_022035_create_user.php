@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('User', function (Blueprint $table) {
             $table->id();
             $table->string('username')->unique();
-            $table->foreignId('id_amil')->references('id_admil')->on('data_amil');
+            $table->foreignId('id_amil')->references('id_amil')->on('data_amil');
             $table->string('password');
             $table->datetime('last_login_date')->nullable();
             $table->timestamp('date_created')->usercurrent();

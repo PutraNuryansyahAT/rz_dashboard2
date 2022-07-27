@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('data_amil', function (Blueprint $table) {
+        Schema::create('Data_amil', function (Blueprint $table) {
             $table->id('id_amil');
+            $table->string('no_ktp')->unique();
             $table->string('nama_lengkap');
             $table->bigInteger('nomor_hp');
             $table->string('email')->unique();
             $table->boolean('aktiv');
-            $table->$table->timestamps();
+            $table->timestamp('date_created')->usercurrent();
         });
     }
 

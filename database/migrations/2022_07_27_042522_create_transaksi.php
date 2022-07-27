@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('transaksi', function (Blueprint $table) {
+        Schema::create('Transaksi', function (Blueprint $table) {
             $table->id('id_transaksi');
             $table->datetime('date_transaksi');
-            $table->foregnId('id_donatur')->references('id_donatur')->on('donatur');
+            $table->foreignId('id_donatur')->references('id_donatur')->on('donatur');
             $table->string('atasnama');
-            $table->foregnid('id_program')->references('id_program')->on('program');
+            $table->foreignId('id_program')->references('id_program')->on('program');
             $table->bigInteger('nominal');
-            $table->foregnid('id_amil')->references('id_amil')->on('data_amil');
+            $table->foreignId('id_amil')->references('id_amil')->on('data_amil');
             $table->string('metode_pembayaran');
             $table->string('status_pembayaran');
         });
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transaksi');
+        Schema::dropIfExists('Transaksi');
     }
 };
