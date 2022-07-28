@@ -11,7 +11,7 @@
                     <div class="flex flex-col w-full max-w-full px-3 mx-auto md:flex-0 shrink-0 md:w-6/12 lg:w-5/12 xl:w-4/12">
                         <div class="relative flex flex-col min-w-0 mt-32 break-words bg-transparent border-0 shadow-none rounded-2xl bg-clip-border">
                             <div class="p-6 pb-0 mb-0 bg-transparent border-b-0 rounded-t-2xl">
-                                <h3 class="relative z-10 font-bold text-transparent bg-gradient-to-r from-gray-400 to-orange-1 bg-clip-text">Welcome back</h3>
+                                <h3 class="relative z-10 font-bold text-transparent bg-gradient-to-r from-gray-400 to-orange-1 bg-clip-text">Selamat Datang</h3>
                                 @if (session()->has('success'))
                                 <div class="bg-gradient-to-r from-green-500 border-t border-b border-green-100 text-white px-4 py-3 rounded" role="alert">
                                     <p class="font-bold my-1">{{ session('success') }}</p>
@@ -29,11 +29,11 @@
 
                                 <form action="/" method="post" role="form">
                                     @csrf
-                                    <label class="inputname">Email</label>
+                                    <label class="inputname">Username</label>
                                     <div class=" mb-4">
-                                        <input type="email" name="email" class="inputtype" placeholder="Email" aria-label="Email" aria-describedby="email-addon" required value="{{ old('email') }}" />
+                                        <input type="text" name="username" class="inputtype" placeholder="Username" aria-label="Username" aria-describedby="username-addon" required value="{{ old('email') }}" />
                                     </div>
-                                    @error('email')
+                                    @error('username')
                                     <p class="text-red-500 text-xs italic -mt-3">{{ $message }} </p>
 
                                     @enderror

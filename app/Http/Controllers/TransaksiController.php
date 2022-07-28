@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transaksi;
 use App\Models\Program;
 use App\Models\Donatur;
+use App\Models\Amil;
 use Illuminate\Http\Request;
 
 
@@ -21,19 +22,20 @@ class TransaksiController extends Controller
         // $donatur = $query->where('donatur', 5);
         return view('/dashboard.transaksi', [
             "title" => "Transaksi",
-            'transaksi' => Transaksi::where('affiliate', auth()->user()->id)
+            'transaksi' => Transaksi::where('id_amil', auth()->user()->id_amil)
                 ->sortable()
                 ->paginate(8),
             'program' => Program::all(),
-            'donatur' => Donatur::all()
+            'donatur' => Donatur::all(),
+            'amil' => Amil::all(),
             // 'donaturauto' => Donatur::select('nama_lengkap', 'id_donatur')->where('nama_lengkap', 'LIKE', "%{$query}%")
         ]);
     }
 
     public function autocomplete(Request $request)
     {
-        $data = Program::select("id as value", "namaprogram as label")
-            ->where('namaprogram', 'LIKE', '%' . $request->get('search') . '%')
+        $data = Program::select("id_program as value", "nama_program as label")
+            ->where('nama_program', 'LIKE', '%' . $request->get('search') . '%')
             ->get();
 
         return response()->json($data);
@@ -45,24 +47,24 @@ class TransaksiController extends Controller
 
 
         if ($request->filled('myDate1') or  $request->filled('myDate2')) {
-            $query = $query->wherebetween('tgldonasi', [$request->myDate1, $request->myDate2]);
+            $query = $query->wherebetween('date_transaksi', [$request->myDate1, $request->myDate2]);
         }
         if ($request->filled('valueprogram')) {
-            $query = $query->where('program', $request->valueprogram);
+            $query = $query->where('id_program', $request->valueprogram);
         }
         if ($request->input('donatur') != "--Pilih Donatur--") {
-            $query = $query->where('donatur', $request->donatur);
+            $query = $query->where('id_donatur', $request->donatur);
         }
         if ($request->filled('status')) {
-            $query = $query->where('statuspembyaran', $request->status);
+            $query = $query->where('status_pembayaran', $request->status);
         }
         return view('/dashboard.transaksi', [
             "title" => "Transaksi",
             'transaksi' => $query
-                ->where('affiliate', auth()->user()->id)->sortable()->paginate(2)->appends($request->all()),
-
+                ->where('id_amil', auth()->user()->id_amil)->sortable()->paginate(2)->appends($request->all()),
             'program' => Program::all(),
-            'donatur' => Donatur::all()
+            'donatur' => Donatur::all(),
+            'amil' => Amil::all(),
         ]);
     }
 }

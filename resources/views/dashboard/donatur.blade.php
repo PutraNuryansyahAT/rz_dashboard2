@@ -44,7 +44,7 @@
                         {{ $donaturs->id_donatur }}
                     </td>
                     <td class="px-4 py-3 text-sm">
-                        {{ $donaturs->nama_lengkap}}
+                        {{ $donaturs->nama}}
                     </td>
                     <td class="px-4 py-3 text-sm">
                         {{ $donaturs->nomorhp }}

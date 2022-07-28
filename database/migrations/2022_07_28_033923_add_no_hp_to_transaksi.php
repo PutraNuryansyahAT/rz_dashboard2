@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Program', function (Blueprint $table) {
-            $table->id('id_program');
-            $table->string('nama_program');
-            $table->boolean('status');
-            $table->timestamp('date_created')->useCurrent();
+        Schema::table('transaksi', function (Blueprint $table) {
+            $table->bigInteger('no_hp');
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('program');
+        Schema::table('transaksi', function (Blueprint $table) {
+            //
+        });
     }
 };

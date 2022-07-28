@@ -27,13 +27,9 @@ class RegisterController extends Controller
                 'username' => 'required|max:25|unique:user',
                 'password' => ['required', 'min:5', 'max:10'],
                 'aktiv' => 'required'
-
             ]);
-
             $validatedData['password'] = Hash::make($validatedData['password']);
-
             User::insert($validatedData);
-
             $request->session()->flash('success', 'Registration Successfull!! Please Login');
             return redirect('/');
         }

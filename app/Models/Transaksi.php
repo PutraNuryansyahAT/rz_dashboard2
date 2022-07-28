@@ -13,5 +13,5 @@ class Transaksi extends Model
 
     protected $table = 'transaksi';
 
-    protected $sortable = ['tgldonasi', 'donatur', 'hp', 'email', 'atasnama', 'program', 'nominal', 'affiliate', 'statuspembayaran'];
+    protected $sortable = ['date_transaksi', 'donatur', 'hp', 'email', 'atasnama', 'id_program', 'nominal', 'affiliate', 'statuspembayaran'];
 }

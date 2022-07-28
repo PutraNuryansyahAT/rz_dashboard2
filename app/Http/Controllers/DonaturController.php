@@ -12,6 +12,7 @@ class DonaturController extends Controller
         return view('/dashboard.donatur', [
             "title" => "Donatur",
             'donatur' => Donatur::all()
+                ->where('id_amil', auth()->user()->id_amil)
         ]);
     }
 }

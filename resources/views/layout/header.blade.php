@@ -125,7 +125,7 @@
                 <ul class="mt-6">
                     <li class="relative px-6 py-3">
                         <span class=" {{($title ==="Dashboard") ? 'absolute inset-y-0 left-0 w-1 bg-orange-1 rounded-tr-lg rounded-br-lg' : '' }}" aria-hidden="true"></span>
-                        <a class="mobileside  " href="/Dashboard">
+                        <a class="mobileside  " href="/dashboard">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                 <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                             </svg>
@@ -226,7 +226,7 @@
                                 <ul x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click.away="closeProfileMenu" @keydown.escape="closeProfileMenu" class="absolute -right-20 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700" aria-label="submenu">
                                     <li class="flex">
                                         <img class="object-cover w-8 h-8 rounded-full" src="img/user.png" alt="" aria-hidden="true" />
-                                        <span class="px-5">{{ auth()->user()->name }}</span>
+                                        <span class="px-5">{{ auth()->user()->username }}</span>
                                         </a>
                                     </li>
                                 </ul>

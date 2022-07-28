@@ -19,8 +19,14 @@ return new class extends Migration
             $table->string('nama_lengkap');
             $table->bigInteger('nomor_hp');
             $table->string('email')->unique();
+            $table->string('cabang_rumahzakat')->nullable();
+            $table->string('nama_bank')->nullable();
+            $table->string('no_rekening')->nullable();
+            $table->string('atas_nama')->nullable();
+            $table->string('surat_pernyataan')->nullable();
+            $table->string('ktp')->nullable();
             $table->boolean('aktiv');
-            $table->timestamp('date_created')->usercurrent();
+            $table->timestamp('date_created')->useCurrent();
         });
     }
 

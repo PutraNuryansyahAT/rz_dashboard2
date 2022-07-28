@@ -13,12 +13,7 @@ class    ViewController extends Controller
         ]);
     }
 
-    public function viewsetting()
-    {
-        return view('/dashboard.setting', [
-            "title" => "Setting"
-        ]);
-    }
+
 
     public function viewaffiliate()
     {

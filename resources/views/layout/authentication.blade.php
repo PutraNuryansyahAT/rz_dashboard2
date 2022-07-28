@@ -73,7 +73,7 @@
                         <script>
                             document.write(new Date().getFullYear());
                         </script>
-                        Soft by Creative Tim.
+                        by Rumah Zakat
                     </p>
                 </div>
             </div>

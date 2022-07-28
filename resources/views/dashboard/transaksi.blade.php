@@ -21,7 +21,7 @@
                         <select class="block w-64 mt-1 text-sm  form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple " name="donatur">
                             <option class="text-gray-500">--Pilih Donatur--</option>
                             @foreach ($donatur as $donaturs )
-                            <option value='{{$donaturs->id_donatur }}'>{{$donaturs->id_donatur }} - {{ $donaturs->nama_lengkap  }}</option>
+                            <option value='{{$donaturs->id_donatur }}'>{{$donaturs->id_donatur }} - {{ $donaturs->nama }}</option>
                             @endforeach
                         </select>
                     </label>
@@ -78,15 +78,15 @@
                 <thead>
                     <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b  bg-gray-500  ">
                         <th class="px-4 py-3">No</th>
-                        <th class="px-4 py-3">@sortablelink('tgldonasi','Tgl Donasi') </th>
-                        <th class="px-4 py-3">@sortablelink('statusdonatur','Status Donatur')</th>
-                        <th class="px-4 py-3">@sortablelink('donatur','Donatur')</th>
+                        <th class="px-4 py-3">@sortablelink('date_transaksi','Tgl Transaksi') </th>
+                        <th class="px-4 py-3">Donatur</th>
+                        <th class="px-4 py-3">Atas Nama</th>
                         <th class="px-4 py-3">Hp</th>
                         <th class="px-4 py-3">Email</th>
-                        <th class="px-4 py-3">@sortablelink('atasnama','Nama') </th>
-                        <th class="px-4 py-3">@sortablelink('program','Program')</th>
-                        <th class="px-4 py-3">@sortablelink('nominal','Nominal')</th>
-                        <th class="px-4 py-3">Affiliate</th>
+                        <th class="px-4 py-3">Program</th>
+                        <th class="px-4 py-3">Nominal</th>
+                        <th class="px-4 py-3">Affiliator </th>
+                        <th class="px-4 py-3">Metode Pembayaran</th>
                         <th class="px-4 py-3">Status Pembayaran</th>
                     </tr>
                 </thead>
@@ -97,38 +97,35 @@
                         {{$loop -> iteration}}
                     </td>
                     <td class="px-4 py-3 text-sm">
-                        {{ $transaksis->tgldonasi }}
+                        {{ $transaksis->date_transaksi }}
                     </td>
                     <td class="px-4 py-3 text-sm">
-                        {{ $transaksis->statusdonasi}}
-                    </td>
-                    <td class="px-4 py-3 text-sm">
-                        {{ $transaksis->donatur}} -
+                        {{ $transaksis->id_donatur}} -
 
                         @foreach ($donatur as $donaturs )
-                        @if($donaturs->id_donatur == $transaksis->donatur)
+                        @if($donaturs->id_donatur == $transaksis->id_donatur)
 
-                        {{ $donaturs->nama_lengkap }}
+                        {{ $donaturs->nama }}
 
                         @endif
 
                         @endforeach
                     </td>
                     <td class="px-4 py-3 text-sm">
-                        {{ $transaksis->hp }}
+                        {{ $transaksis->atasnama }}
+                    </td>
+                    <td class="px-4 py-3 text-sm">
+                        {{ $transaksis->no_hp }}
                     </td>
                     <td class="px-4 py-3 text-sm">
                         {{ $transaksis->email }}
                     </td>
                     <td class="px-4 py-3 text-sm">
-                        {{ $transaksis->atasnama }}
-                    </td>
-                    <td class="px-4 py-3 text-sm">
-                        {{ $transaksis->program}} -
+                        {{ $transaksis->id_program}} -
                         @foreach ($program as $programs )
-                        @if($programs->id == $transaksis->program)
+                        @if($programs->id_program == $transaksis->id_program)
 
-                        {{ $programs->namaprogram }}
+                        {{ $programs->nama_program }}
 
                         @endif
 
@@ -138,10 +135,20 @@
                         {{ $transaksis->nominal}},00
                     </td>
                     <td class="px-4 py-3 text-sm">
-                        {{ $transaksis->affiliate }} - {{auth()->user()->name}}
+                        {{ $transaksis->id_amil }} -
+                        @foreach ($amil as $amils )
+                        @if($amils->id_amil == $transaksis->id_amil)
+                        {{ $amils->nama_lengkap }}
+
+                        @endif
+
+                        @endforeach
                     </td>
                     <td class="px-4 py-3 text-sm">
-                        {{ $transaksis->statuspembyaran}}
+                        {{ $transaksis->metode_pembayaran}}
+                    </td>
+                    <td class="px-4 py-3 text-sm">
+                        {{ $transaksis->status_pembayaran}}
                     </td>
 
                     @endforeach

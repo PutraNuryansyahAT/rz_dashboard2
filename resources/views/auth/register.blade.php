@@ -5,13 +5,14 @@
 @section('auth')
 <main class="mt-0 transition-all duration-200 ease-soft-in-out">
     <section class="min-h-screen mb-32">
-        <div class="relative flex items-start pt-12 pb-56 m-4 overflow-hidden bg-center bg-cover min-h-50-screen rounded-xl" style="background-image: url('/img/curved-images/curved14.jpg')">
+        <div class="relative flex items-start pt-12 pb-56 m-4 overflow-hidden bg-center bg-cover min-h-50-screen rounded-xl" style="background-image: url('/img/backgroundregis.jpg')">
             <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-dark-gray opacity-60"></span>
             <div class="container z-10">
                 <div class="flex flex-wrap justify-center -mx-3">
                     <div class="w-full max-w-full px-3 mx-auto mt-0 text-center lg:flex-0 shrink-0 lg:w-5/12">
-                        <h1 class="mt-12 mb-2 text-white">Welcome!</h1>
-                        <p class="text-white">Use these awesome forms to login or create new account in your project for free.</p>
+                        <h1 class="relative z-10 font-bold text-transparent bg-gradient-to-r text-white bg-clip-text">Registrasi Akun Login</h1>
+
+
                     </div>
                 </div>
             </div>
@@ -64,9 +65,9 @@
 
 
                                 <div class="text-center">
-                                    <button type="submit" class="buttonregist">Sign up</button>
+                                    <button type="submit" class="buttonlogin">Sign up</button>
                                 </div>
-                                <p class="mt-4 mb-0 leading-normal text-size-sm">Already have an account? <a href="/" class="font-bold text-slate-700">Sign in</a></p>
+                                <p class="mt-4 mb-0 leading-normal text-size-sm">Already have an account? <a href="/" class="relative z-10 font-semibold text-transparent bg-gradient-orange bg-clip-text">Sign in</a></p>
                             </form>
                             <!-- End Form Action -->
                         </div>
