@@ -19,6 +19,7 @@ class AmilController extends Controller
 
     public function update(Request $request)
     {
+        // ddd($request);
         $a = $request->email;
 
         $rules = [
@@ -28,18 +29,24 @@ class AmilController extends Controller
             'nama_bank' => 'nullable',
             'no_rekening' => 'nullable',
             'atas_nama' => 'nullable',
-            'surat_pernyataan' => 'nullable',
-            'ktp' => 'nullable',
+            'surat_pernyataan' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'ktp' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
+        $validatedData = $request->validate($rules);
+
         if ($request->email != $a) {
             $rules['email'] = 'required|email:dns|unique:data_amil';
         }
-        $validatedData = $request->validate($rules);
+        if ($request->file('surat_pernyataan')) {
+            $rules['surat_pernyataan'] = $request->file('surat_pernyataan')->store('surat_pernyataan');
+        }
+        if ($request->file('ktp')) {
+            $rules['ktp'] = $request->file('ktp')->store('ktp');
+        }
 
         Amil::where('id_amil', auth()->user()->id_amil)->update($validatedData);
 
         $request->session()->flash('success', 'Update Success');
         return redirect('/settings');
-        // return back()->with('message', 'Sudah Berhasil Update');
     }
 }

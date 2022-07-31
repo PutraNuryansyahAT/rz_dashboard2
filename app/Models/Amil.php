@@ -12,4 +12,5 @@ class Amil extends Model
 
     use HasFactory;
     protected $table = 'data_amil';
+    protected $guarded = ['id_amil'];
 }

@@ -11,6 +11,14 @@ class DashboardController extends Controller
 {
     public function viewdashboard()
     {
+
+        // $total_transaksi = Program::select('total_transaksi')->pluck('total_transaksi');
+
+        // $title = Program::select('program')->pluck('program');
+
+        // $total_fee = Program::select('total_fee')->pluck('total_fee');
+        // compact('total_transaksi', 'title', 'total_fee')
+
         return view('/dashboard.dashboard', [
             "title" => "Dashboard",
             'dashboard' => Transaksi::select('program.nama_program', Transaksi::raw('sum(nominal) as total_transaksi'), Transaksi::raw('sum(nominal)*5/100 as total_fee'))
@@ -26,7 +34,6 @@ class DashboardController extends Controller
             'total_transaksi_nominal' => Transaksi::select(Transaksi::raw('sum(nominal) as total_nominal'))
                 ->where('id_amil', auth()->user()->id_amil)
                 ->where('status_pembayaran', 'Success')->first(),
-
             'banyak_transaksi' => Transaksi::where('id_amil', auth()->user()->id_amil)->count(),
         ]);
     }

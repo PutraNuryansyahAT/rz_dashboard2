@@ -15,7 +15,7 @@
 
         </div>
         <!-- General elements -->
-        <form action="/update" method="post" enctype="multipart/form">
+        <form action="/update" method="post" enctype="multipart/form-data">
             @method('put')
             @csrf
             <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md ">
@@ -98,11 +98,25 @@
                 <h1 class="mt-6  mb-4 text-xl font-semibold text-gray-700 ">
                     Upload Berkas
                     </h2>
-                    <label class="block mb-2 text-sm font-medium text-gray-900 " for="file_input">Surat Pernyataan</label>
-                    <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer  focus:outline-none " id="file_input" type="file" name="surat_pernyataan">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 ">Surat Pernyataan</label>
+                    <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer  focus:outline-none " id="file_surat_pernyataan" type="file" name="surat_pernyataan">
+                    <div class="col-md-12 mb-2">
+                        @error('surat_pernyataan')
+                        <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
+
+                        @enderror
+                        <img id="preview-surat_pernyataan-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif" alt="preview image" style="max-height: 250px;">
+                    </div>
 
                     <label class="block mb-2 mt-4 text-sm font-medium text-gray-900 " for="file_input">KTP</label>
-                    <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer  focus:outline-none " id="file_input" type="file" name="ktp">
+                    <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer  focus:outline-none " id="file_ktp" type="file" name="ktp">
+                    <div class="col-md-12 mb-2">
+                        @error('ktp')
+                        <p class="text-red-500 text-xs italic -mt-3">{{ $message}}</p>
+
+                        @enderror
+                        <img id="preview-ktp-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif" alt="preview image" style="max-height: 250px;">
+                    </div>
                     <br>
                     <div class=" flex justify-center">
                         <button type="submit " class=" bg-orange-500 hover:bg-orange-1 text-gray-100 font-semibold hover:text-white py-2 px-5 border border-orange-200 hover:border-transparent rounded">
@@ -113,7 +127,37 @@
 
             </div>
         </form>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(e) {
+                $('#file_ktp').change(function() {
 
+                    let reader = new FileReader();
+
+                    reader.onload = (e) => {
+
+                        $('#preview-ktp-before-upload').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(this.files[0]);
+
+                });
+                $('#file_surat_pernyataan').change(function() {
+
+                    let reader = new FileReader();
+
+                    reader.onload = (e) => {
+
+                        $('#preview-surat_pernyataan-before-upload').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(this.files[0]);
+
+                });
+
+
+            });
+        </script>
 
     </div>
 </main>
