@@ -27,20 +27,20 @@
                 @endif
 
                 <label class="block text-sm">
-                    <span class="text-black">No KTP</span>
+                    <span class="inputnamesetting">No KTP</span>
                     <input class="block w-full mt-1 text-sm form-input bg-gray-400" placeholder="Name" name="no_ktp" value="{{ old('no_ktp' , $Data_amil->no_ktp)}}" disabled />
                 </label>
 
-                <label class="block mt-4 text-sm">
-                    <span class="text-black">Nama Lengkap</span>
+                <label class="label">
+                    <span class="inputnamesetting">Nama Lengkap</span>
                     <input class="block w-full mt-1 text-sm form-input " placeholder="Name" name="nama_lengkap" value="{{ old('nama_lengkap' , $Data_amil->nama_lengkap)}}" />
                 </label>
                 @error('nama_lengkap')
                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
 
                 @enderror
-                <label class="block mt-4 text-sm">
-                    <span class="text-black">Alamat Domisili</span>
+                <label class="label">
+                    <span class="inputnamesetting">Alamat Domisili</span>
                     <textarea class="block w-full mt-1 text-sm form-textarea " rows="3" placeholder="Alamat" name="alamat">{{ old('alamat' , $Data_amil->alamat ) }}</textarea>
                 </label>
                 @error('alamat')
@@ -48,8 +48,8 @@
 
                 @enderror
 
-                <label class="block mt-4 text-sm">
-                    <span class="text-black">Email</span>
+                <label class="label">
+                    <span class="inputnamesetting ">Email</span>
                     <input class="block w-full mt-1 text-sm form-input" placeholder="Email" name="email" value="{{ old('email' , $Data_amil->email)}}" />
                 </label>
                 @error('email')
@@ -57,8 +57,8 @@
 
                 @enderror
 
-                <label class="block mt-4 text-sm">
-                    <span class="text-black">Hp</span>
+                <label class="label">
+                    <span class="inputnamesetting">Hp</span>
                     <input class="block w-full mt-1 text-sm focus:outline-none focus:shadow-outline-purple form-input" placeholder="+62" value="{{ old('nomorhp' ,  $Data_amil->nomor_hp)}}" name="nomor_hp" />
                 </label>
                 @error('nomor_hp')
@@ -66,8 +66,8 @@
 
                 @enderror
 
-                <label class="block mt-4 text-sm">
-                    <span class="text-black">Cabang Rumah Zakat Terdekat</span>
+                <label class="label">
+                    <span class="inputnamesetting">Cabang Rumah Zakat Terdekat</span>
                     <input class="block w-full mt-1 text-sm form-input" placeholder="Cabang Rumah Zakat Terdekat" value="{{ old('cabang' , $Data_amil->cabang_rumahzakat)}}" name="cabang_rumahzakat" disabled />
                 </label>
                 @error('cabang_rumahzakat')
@@ -80,18 +80,18 @@
                     Data Rekening Bank
                 </h2>
 
-                <label class="block mt-4 text-sm">
-                    <span class="text-black">Nama Bank</span>
+                <label class="label">
+                    <span class="inputnamesetting">Nama Bank</span>
                     <input class="block w-full mt-1 text-sm  form-input" placeholder="Nama Bank" name="nama_bank" value="{{ old('nama_bank' , $Data_amil->nama_bank)}}" />
                 </label>
 
-                <label class="block mt-4 text-sm">
-                    <span class="text-black">No Rekening</span>
+                <label class="label">
+                    <span class="inputnamesetting">No Rekening</span>
                     <input class="block w-full mt-1 text-sm  form-input" placeholder="No Rekening" name="no_rekening" value="{{ old('no_rekening' , $Data_amil->no_rekening )}}" />
                 </label>
 
-                <label class="block mt-4 text-sm">
-                    <span class="text-black">Atas Nama</span>
+                <label class="label">
+                    <span class="inputnamesetting">Atas Nama</span>
                     <input class="block w-full mt-1 text-sm  form-input" class="block w-full mt-1 text-sm  form-input" placeholder="Atas Nama" name="atas_nama" value="{{ old('atas_nama' , $Data_amil->atas_nama)}}" />
                 </label>
 
@@ -99,23 +99,25 @@
                     Upload Berkas
                     </h2>
                     <label class="block mb-2 text-sm font-medium text-gray-900 ">Surat Pernyataan</label>
-                    <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer  focus:outline-none " id="file_surat_pernyataan" type="file" name="surat_pernyataan">
+                    <input id="file_surat_pernyataan" type="file" name="surat_pernyataan">
+                    <a href="{{ $Data_amil->surat_pernyataan }}" class="bg-orange-500 hover:bg-orange-1 text-gray-100 font-semibold hover:text-white py-2 px-5 border border-orange-200 hover:border-transparent rounded"> Lihat Gambar Sebelumnya</a>
                     <div class="col-md-12 mb-2">
                         @error('surat_pernyataan')
                         <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
-
                         @enderror
+                        <!-- <img src="{{ asset('storage/'.$Data_amil->surat_pernyataan) }}" width="150"> -->
                         <img id="preview-surat_pernyataan-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif" alt="preview image" style="max-height: 250px;">
                     </div>
 
-                    <label class="block mb-2 mt-4 text-sm font-medium text-gray-900 " for="file_input">KTP</label>
-                    <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer  focus:outline-none " id="file_ktp" type="file" name="ktp">
+                    <label class="block mb-2 mt-4 text-sm font-medium text-gray-900 " for="file_input">KTP </label>
+                    <input id="file_ktp" type="file" name="ktp">
+                    <a href="{{ $Data_amil->ktp }}" class="bg-orange-500 hover:bg-orange-1 text-gray-100 font-semibold hover:text-white py-2 px-5 border border-orange-200 hover:border-transparent rounded"> Lihat Gambar Sebelumnya</a>
                     <div class="col-md-12 mb-2">
                         @error('ktp')
                         <p class="text-red-500 text-xs italic -mt-3">{{ $message}}</p>
-
                         @enderror
                         <img id="preview-ktp-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif" alt="preview image" style="max-height: 250px;">
+
                     </div>
                     <br>
                     <div class=" flex justify-center">

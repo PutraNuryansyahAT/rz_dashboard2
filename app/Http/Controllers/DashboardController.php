@@ -12,7 +12,7 @@ class DashboardController extends Controller
     public function viewdashboard()
     {
 
-        // $total_transaksi = Program::select('total_transaksi')->pluck('total_transaksi');
+        $bulan = Transaksi::select('');
 
         // $title = Program::select('program')->pluck('program');
 

@@ -56,8 +56,23 @@ inline-flex items-center justify-between w-full text-sm font-semibold transition
 px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200
 
 }
-
 .mobileside{
 @apply
 inline-flex items-center w-full text-sm font-semibold text-gray-50 hover:text-orange-400  transition-colors duration-150
+}
+
+.label{
+    @apply
+    block mt-4 text-sm
+}
+
+.inputnamesetting{
+    @apply
+    text-black font-bold 
+}
+
+.inputimagesetting{
+    @apply
+    block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer  focus:outline-none
+
 }

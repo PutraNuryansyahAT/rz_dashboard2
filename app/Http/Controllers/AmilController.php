@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Models\Amil;
+use Illuminate\Support\Facades\Storage;
 
 class AmilController extends Controller
 {
@@ -29,24 +31,32 @@ class AmilController extends Controller
             'nama_bank' => 'nullable',
             'no_rekening' => 'nullable',
             'atas_nama' => 'nullable',
-            'surat_pernyataan' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'ktp' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'surat_pernyataan' => 'image|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'ktp' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
-        $validatedData = $request->validate($rules);
 
         if ($request->email != $a) {
             $rules['email'] = 'required|email:dns|unique:data_amil';
         }
+        $validatedData = $request->validate($rules);
+
         if ($request->file('surat_pernyataan')) {
-            $rules['surat_pernyataan'] = $request->file('surat_pernyataan')->store('surat_pernyataan');
+            $validatedData['surat_pernyataan'] = $request->file('surat_pernyataan')->store('surat_pernyataan');
         }
         if ($request->file('ktp')) {
-            $rules['ktp'] = $request->file('ktp')->store('ktp');
+            $validatedData['ktp'] = $request->file('ktp')->store('ktp');
         }
 
         Amil::where('id_amil', auth()->user()->id_amil)->update($validatedData);
 
         $request->session()->flash('success', 'Update Success');
         return redirect('/settings');
+    }
+
+    public function download($filename)
+    {
+        $path = storage_path('app/public/' . $filename);
+
+        return response()->download($path);
     }
 }

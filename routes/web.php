@@ -42,6 +42,7 @@ Route::post('logout', [AuthController::class, 'logout']);
 /*Amil */
 Route::get('/settings', [AmilController::class, 'viewsetting'])->middleware('auth');
 Route::put('/update', [AmilController::class, 'update']);
+Route::get('/download/{filename}', [AmilController::class, 'download'])->name('downloadimg');
 
 /*Dashboard*/
 Route::get('/dashboard', [DashboardController::class, 'viewdashboard'])->middleware('auth');

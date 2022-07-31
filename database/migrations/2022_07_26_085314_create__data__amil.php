@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('ktp')->nullable();
             $table->boolean('aktiv');
             $table->timestamp('date_created')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 
