@@ -11,19 +11,23 @@
                 <!-- Date Bar -->
                 <div class="p-3">
                     Tanggal Donasi :
-                    <input type="date" name="myDate1" class="form-input">
+                    <input type="date" name="myDate1" placeholder="MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text' )" class="form-input w-20">
+
                     -
-                    <input type="date" name="myDate2" class="form-input">
+                    <input type="date" name="myDate2" placeholder="MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text' )" class="form-input w-20">
+
+
                 </div>
                 <!-- Nama Donatur bar -->
                 <div class="p-3 ">
                     <label class="text-sm">
-                        <select class="block w-64 mt-1 text-sm  form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple " name="donatur">
+                        <input class="block w-70 mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input" placeholder="Search" type="text" name="search" id="search" />
+                        <!-- <select class="block w-64 mt-1 text-sm  form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple " name="donatur">
                             <option class="text-gray-500">--Pilih Donatur--</option>
                             @foreach ($donatur as $donaturs )
-                            <option value='{{$donaturs->id_donatur }}'>{{$donaturs->id_donatur }} - {{ $donaturs->nama }}</option>
+                            <option value='{{$donaturs->id_donatur }}'>{{$donaturs->id_donatur }} - {{ $donaturs->nama}}</option>
                             @endforeach
-                        </select>
+                        </select> -->
                     </label>
                     <div class="relative">
                         <label class="block text-sm">
@@ -56,7 +60,7 @@
                         </script>
                     </div>
                     <br>
-                    <button class="px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-md active:bg-orange-500 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" type="submit">
+                    <button class="px-6 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-md active:bg-orange-500 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" type="submit">
                         Search
                     </button>
                 </div>
