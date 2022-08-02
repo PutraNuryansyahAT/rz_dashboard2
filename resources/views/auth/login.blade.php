@@ -54,7 +54,7 @@
                             <div class="p-6 px-1 pt-0 text-center bg-transparent border-t-0 border-t-solid rounded-b-2xl lg:px-2">
                                 <p class="mx-auto mb-6 leading-normal text-size-sm">
                                     Don't have an account?
-                                    <a href="/register" class="relative z-10 font-semibold text-transparent bg-gradient-orange bg-clip-text">Sign up</a>
+                                    <a href="/register" class="relative z-10 font-semibold text-transparent bg-gradient-orange bg-clip-text">Sign up</a> | Register Your ID AMIL?<a href="/registerdamil" class="relative z-10 font-semibold text-transparent bg-gradient-orange bg-clip-text"> Sign here </a>
                                 </p>
                             </div>
                         </div>

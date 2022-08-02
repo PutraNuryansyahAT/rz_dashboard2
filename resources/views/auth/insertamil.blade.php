@@ -7,15 +7,7 @@
     <section class="min-h-screen mb-32">
         <div class="relative flex items-start pt-12 pb-56 m-4 overflow-hidden bg-center bg-cover min-h-50-screen rounded-xl" style="background-image: url('/img/backgroundregis.jpg')">
             <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-dark-gray opacity-60"></span>
-            <div class="container z-10">
-                <div class="flex flex-wrap justify-center -mx-3">
-                    <div class="w-full max-w-full px-3 mx-auto mt-0 text-center lg:flex-0 shrink-0 lg:w-5/12">
-                        <h1 class="relative z-10 font-bold text-transparent bg-gradient-to-r text-white bg-clip-text">Registrasi Akun Login</h1>
 
-
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="container">
             <div class="flex flex-wrap -mx-3 -mt-48 md:-mt-56 lg:-mt-48">
@@ -26,7 +18,7 @@
                         </div>
                         <!-- Form Action -->
                         <div class="flex-auto p-6">
-                            <form action="/inputregister" method="post" role="form text-left" enctype="multipart/form-data">
+                            <form action="/registerdamil" method="post" role="form text-left" enctype="multipart/form-data">
 
                                 @csrf
                                 @if (session()->has('registError'))
@@ -36,27 +28,23 @@
                                 @endif
 
                                 DATA DIRI
+                                <!-- ID AMIL -->
                                 <div class="mb-4">
-                                    <input type="text" name="id_amil" placeholder="id amil" aria-label="Name" aria-describedby="data diri" class="inputtype" value="{{ old('username') }}" required />
-                                    <!-- <select class="inputtype " name="id_amil">
-                                        <option value="" disabled selected hidden>-- Pilih Amil --</option>
-                                        @foreach ($amil as $amils )
-                                        <option value='{{$amils->id_amil }}'>{{$amils->nama_lengkap }} - {{ $amils->email  }}</option>
-                                        @endforeach
-
-                                    </select> -->
+                                    <input type="text" name="id_amil" placeholder="id amil" aria-label="Name" aria-describedby="data diri" class="inputtype" value="{{ old('id_amil') }}" required />
                                 </div>
                                 @error('id_amil')
                                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
                                 @enderror
 
+                                <!-- NO KTP -->
                                 <div class="mb-4">
-                                    <input type="text" name="no_ktp" placeholder="NIK" aria-label="Name" aria-describedby="data diri" class="inputtype" value="{{ old('no_ktp') }}" required />
+                                    <input type="text" name="no_ktp" placeholder="no ktp" aria-label="Name" aria-describedby="data diri" class="inputtype" value="{{ old('no_ktp') }}" required />
                                 </div>
                                 @error('no_ktp')
                                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
                                 @enderror
 
+                                <!-- NAMA LENGKAP -->
                                 <div class="mb-4">
                                     <input type="text" name="nama_lengkap" placeholder="Nama Lengkap" aria-label="Name" aria-describedby="data diri" class="inputtype" value="{{ old('nama_lengkap') }}" required />
                                 </div>
@@ -64,26 +52,40 @@
                                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
                                 @enderror
 
+                                <!-- Alamat -->
                                 <div class="mb-4">
-                                    <input type="text" name="email" placeholder="Email" aria-label="Name" aria-describedby="data diri" class="inputtype" value="{{ old('email') }}" required />
+                                    <input type="text" name="alamat" placeholder="Alamat Domisili" aria-label="Name" aria-describedby="data diri" class="inputtype" value="{{ old('alamat') }}" required />
+                                </div>
+                                @error('alamat')
+                                <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
+                                @enderror
+
+                                <!-- EMAIL -->
+                                <div class="mb-4">
+                                    <input type="email" name="email" placeholder="email" aria-label="Name" aria-describedby="data diri" class="inputtype" value="{{ old('email') }}" required />
                                 </div>
                                 @error('email')
                                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
                                 @enderror
 
-
-
-
+                                <!-- NOMOR HP -->
                                 <div class="mb-4">
-                                    <input type="text" name="no_hp" placeholder="Nomor HP" aria-label="Name" aria-describedby="data diri" class="inputtype" value="{{ old('no_hp') }}" required />
+                                    <input type="text" name="nomor_hp" placeholder="Nomor HP" aria-label="Name" aria-describedby="data diri" class="inputtype" value="{{ old('nomor_hp') }}" required />
                                 </div>
-                                @error('no_hp')
+                                @error('nomor_hp')
                                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
                                 @enderror
 
-                                <!-- Input Data Rekening -->
-                                DATA REKENING
+                                <!-- CABANG RUMAH ZAKAT -->
+                                <div class="mb-4">
+                                    <input type="text" name="cabang_rumahzakat" placeholder="Cabang Rumah Zakat" aria-label="Name" aria-describedby="data diri" class="inputtype" value="{{ old('cabang_rumahzakat') }}" required />
+                                </div>
+                                @error('cabang_rumahzakat')
+                                <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
+                                @enderror
 
+                                DATA REKENING
+                                <!-- Nama Bank -->
                                 <div class="mb-4">
                                     <input type="input" name="nama_bank" placeholder="Bank yang digunakan" aria-label="bank" aria-describedby="password-addon" class="inputtype" required value="{{ old('nama_bank') }}" />
                                 </div>
@@ -91,6 +93,7 @@
                                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
                                 @enderror
 
+                                <!-- NO REKENING -->
                                 <div class="mb-4">
                                     <input type="input" name="no_rekening" placeholder="Nomor Rekening" aria-label="bank" aria-describedby="password-addon" class="inputtype" required value="{{ old('no_rekening') }}" />
                                 </div>
@@ -98,6 +101,7 @@
                                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
                                 @enderror
 
+                                <!-- ATAS NAMA -->
                                 <div class="mb-4">
                                     <input type="input" name="atas_nama" placeholder="Atas Nama" aria-label="bank" aria-describedby="password-addon" class="inputtype" required value="{{ old('no_rekening') }}" />
                                 </div>
@@ -105,7 +109,6 @@
                                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
                                 @enderror
 
-                                <!-- Upload Berkas -->
                                 UPLOAD BERKAS
                                 <label class="block mb-2 text-xs font-medium text-gray-900 ">Surat Pernyataan</label>
                                 <input id="file_surat_pernyataan" type="file" name="surat_pernyataan">
@@ -126,6 +129,7 @@
                                     <img id="preview-ktp-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif" alt="preview image" style="max-height: 100px;">
 
                                 </div>
+
                                 <!-- Button submit -->
                                 <div class="text-center">
                                     <button type="submit" class="buttonlogin">Sign up</button>
@@ -133,8 +137,6 @@
                                 <p class="mt-4 mb-0 leading-normal text-size-sm">Already have an account? <a href="/" class="relative z-10 font-semibold text-transparent bg-gradient-orange bg-clip-text">Sign in</a></p>
                                 <input type="text" name="aktiv" value="1" hidden>
                             </form>
-
-                            <!-- script for previews the image -->
                             <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
                             <script type="text/javascript">
                                 $(document).ready(function(e) {
@@ -162,7 +164,6 @@
                                     });
                                 });
                             </script>
-                            <!-- End Form Action -->
                         </div>
                     </div>
                 </div>

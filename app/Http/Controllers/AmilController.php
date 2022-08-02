@@ -20,6 +20,11 @@ class AmilController extends Controller
         ]);
     }
 
+    public function viewinput(Request $request)
+    {
+        return view('/auth.insertamil');
+    }
+
     public function update(Request $request)
     {
         // ddd($request);
@@ -57,6 +62,39 @@ class AmilController extends Controller
         $request->session()->flash('success', 'Update Success');
         return redirect('/settings');
     }
+
+    public function store(Request $request)
+    {
+        // return ($request);
+        $validatedData = $request->validate([
+            'id_amil' => 'required|unique:data_amil',
+            'no_ktp' => 'required|unique:data_amil',
+            'email' => 'required|email:dns|unique:data_amil',
+            'nama_lengkap' => 'required|max:255',
+            'alamat' => 'required|max:255',
+            'nomor_hp' => 'required|numeric|digits_between:3,15',
+            'cabang_rumahzakat' => 'required|max:255',
+            'nama_bank' => 'required|max:255',
+            'no_rekening' => 'required|numeric|digits_between:2,15',
+            'atas_nama' => 'required|max:255',
+            'surat_pernyataan' => 'image|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'ktp' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'aktiv' => 'required|max:1',
+
+        ]);
+
+        if ($request->file('surat_pernyataan')) {
+            $validatedData['surat_pernyataan'] = $request->file('surat_pernyataan')->store('surat_pernyataan');
+        }
+        if ($request->file('ktp')) {
+            $validatedData['ktp'] = $request->file('ktp')->store('ktp');
+        }
+        Amil::insert($validatedData);
+
+        return redirect('/')->with('success', 'Id Amil akan diproses');
+    }
+
+
 
     public function download($filename)
     {

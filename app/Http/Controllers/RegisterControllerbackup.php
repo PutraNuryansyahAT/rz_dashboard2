@@ -45,7 +45,7 @@ class RegisterController extends Controller
 
         $validatedDatauser['password'] = Hash::make($validatedDatauser['password']);
 
-        User::insert($validatedDatauser);
+
         Amil::create($validatedDataAmil);
 
         if ($request->file('surat_pernyataan')) {
