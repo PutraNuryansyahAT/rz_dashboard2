@@ -35,13 +35,7 @@
                                 @endif
 
                                 <div class="mb-4">
-                                    <select class="inputtype " name="id_amil">
-                                        <option value="" disabled selected hidden>-- Pilih Amil --</option>
-                                        @foreach ($amil as $amils )
-                                        <option value='{{$amils->id_amil }}'>{{$amils->nama_lengkap }} - {{ $amils->email  }}</option>
-                                        @endforeach
-
-                                    </select>
+                                    <input type="text" name="id_amil" placeholder="id amil" aria-label="Name" aria-describedby="data diri" class="inputtype" value="{{ old('id_amil') }}" required />
                                 </div>
                                 @error('id_amil')
                                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>

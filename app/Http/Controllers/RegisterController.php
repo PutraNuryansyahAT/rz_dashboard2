@@ -21,6 +21,9 @@ class RegisterController extends Controller
 
         $cekamil = Amil::select('aktiv')->where('id_amil', $request->id_amil)->first();
 
+        if (empty($cekamil->aktiv)) {
+            return back()->with('registError', '"ID amil tidak ditemukan"');
+        }
         if ($cekamil->aktiv == 1) {
             $validatedData = $request->validate([
                 'id_amil' => 'required|unique:user',
@@ -32,8 +35,8 @@ class RegisterController extends Controller
             User::insert($validatedData);
             $request->session()->flash('success', 'Registration Successfull!! Please Login');
             return redirect('/');
+        } else {
+            return back()->with('registError', 'Akun Amil Tidak Aktiv');
         }
-
-        return back()->with('registError', 'Akun Amil Tidak Aktiv');
     }
 }

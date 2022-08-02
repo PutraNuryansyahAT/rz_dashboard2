@@ -14,10 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('Data_amil', function (Blueprint $table) {
-            $table->id('id_amil');
+            $table->engine = 'InnoDB';
+            $table->string('id_amil')->primary();
             $table->string('no_ktp')->unique();
             $table->string('nama_lengkap');
-            $table->bigInteger('nomor_hp');
+            $table->string('nomor_hp');
             $table->string('email')->unique();
             $table->string('cabang_rumahzakat')->nullable();
             $table->string('nama_bank')->nullable();
@@ -26,6 +27,7 @@ return new class extends Migration
             $table->string('surat_pernyataan')->nullable();
             $table->string('ktp')->nullable();
             $table->boolean('aktiv');
+            $table->string('alamat')->nullable();
             $table->timestamp('date_created')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

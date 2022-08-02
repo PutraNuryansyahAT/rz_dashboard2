@@ -57,6 +57,7 @@ Route::get('/autocomplete', [TransaksiController::class, 'autocomplete'])->name(
 
 /* Donatur*/
 Route::get('/donatur', [DonaturController::class, 'viewdonatur'])->middleware('auth');
+Route::get('/searchdonatur', [DonaturController::class, 'viewsearchdonatur'])->middleware('auth');
 
 /* Pages */
 Route::get('/faq', [PagesController::class, 'viewfaq'])->middleware('auth');

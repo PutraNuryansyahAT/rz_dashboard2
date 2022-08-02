@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Amil;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class AmilController extends Controller
 {
@@ -22,8 +23,10 @@ class AmilController extends Controller
     public function update(Request $request)
     {
         // ddd($request);
-        $a = $request->email;
 
+        $date = Carbon::now();
+        $a = $request->email;
+        $amil = Amil::where('id_amil', auth()->user()->id_amil);
         $rules = [
             'nama_lengkap' => 'required|max:255',
             'alamat' => 'required|max:255',
@@ -33,12 +36,14 @@ class AmilController extends Controller
             'atas_nama' => 'nullable',
             'surat_pernyataan' => 'image|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'ktp' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
         ];
 
         if ($request->email != $a) {
             $rules['email'] = 'required|email:dns|unique:data_amil';
         }
         $validatedData = $request->validate($rules);
+        $validatedData['updated_at'] =  $date;
 
         if ($request->file('surat_pernyataan')) {
             $validatedData['surat_pernyataan'] = $request->file('surat_pernyataan')->store('surat_pernyataan');
@@ -47,7 +52,7 @@ class AmilController extends Controller
             $validatedData['ktp'] = $request->file('ktp')->store('ktp');
         }
 
-        Amil::where('id_amil', auth()->user()->id_amil)->update($validatedData);
+        $amil->update($validatedData);
 
         $request->session()->flash('success', 'Update Success');
         return redirect('/settings');

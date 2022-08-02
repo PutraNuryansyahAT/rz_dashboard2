@@ -15,4 +15,15 @@ class DonaturController extends Controller
                 ->where('id_amil', auth()->user()->id_amil)
         ]);
     }
+
+    public function viewsearchdonatur(Request $request)
+    {
+        return view('/dashboard.donatur', [
+            "title" => "Search Donatur",
+            "donatur" => Donatur::where('id_donatur', $request->searchdonatur)
+                ->orwhere('email', $request->searchdonatur)
+                ->where('id_amil', auth()->user()->id_amil)
+                ->get(),
+        ]);
+    }
 }

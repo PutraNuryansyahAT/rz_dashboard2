@@ -7,12 +7,12 @@
             Donatur
         </h2>
         <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
-            <form action="/searchtransaksi" method="get">
+            <form action="/searchdonatur" method="get">
                 @csrf
                 <!-- search bar -->
                 <div class="p-3 ">
                     <div class="relative">
-                        <input class="block md:w-1/4 pl-20 mt-1 ml-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input" placeholder="Type Here" />
+                        <input class="block md:w-50 pl-20 mt-1 ml-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input" placeholder="Type Here" name="searchdonatur" type="text" />
                         <button class="absolute inset-y-0 px-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-l-md active:bg-orange-200 hover:bg-orange-500 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" type="submit">
                             Search
                         </button>

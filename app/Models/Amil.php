@@ -12,5 +12,7 @@ class Amil extends Model
 
     use HasFactory;
     protected $table = 'data_amil';
-    protected $guarded = ['id_amil'];
+    protected $primaryKey = 'id_amil';
+    const UPDATED_AT = 'updated_at';
+    protected $fillable = ['*'];
 }

@@ -101,6 +101,7 @@
                     <label class="block mb-2 text-sm font-medium text-gray-900 ">Surat Pernyataan</label>
                     <input id="file_surat_pernyataan" type="file" name="surat_pernyataan">
                     <a href="{{ $Data_amil->surat_pernyataan }}" class="bg-orange-500 hover:bg-orange-1 text-gray-100 font-semibold hover:text-white py-2 px-5 border border-orange-200 hover:border-transparent rounded"> Lihat Gambar Sebelumnya</a>
+
                     <div class="col-md-12 mb-2">
                         @error('surat_pernyataan')
                         <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
