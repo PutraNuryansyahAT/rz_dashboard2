@@ -12,15 +12,11 @@
 
         var data = google.visualization.arrayToDataTable([
             ['Total Progam yang bertransaksi ', 'Program'],
-            ['Work', 11],
-            ['Eat', 2],
-            ['Commute', 2],
-            ['Watch TV', 2],
-            ['Sleep', 7]
+            <?php echo $diagramprog ?>
         ]);
 
         var options = {
-            title: 'Program '
+            title: 'Program'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));

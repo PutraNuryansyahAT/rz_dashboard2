@@ -23,10 +23,21 @@ class DashboardController extends Controller
          FROM transaksi LEFT JOIN program ON program.id_program = transaksi.id_program
          WHERE transaksi.id_amil = $id_amil
          GROUP BY transaksi.id_program "));
+        $prodig = "";
+        foreach ($result as $val) {
+
+            $prodig .= " ['" . $val->nama_program . "',    " . $val->banyak_program . " ],";
+        }
+
+        $diagramprog = $prodig;
 
 
 
-        return view('/dashboard.dashboard', [
+
+
+
+
+        return view('/dashboard.dashboard', compact('diagramprog'), [
             "title" => "Dashboard",
 
             'dashboard' => Transaksi::select('program.nama_program', Transaksi::raw('sum(nominal) as total_transaksi'), Transaksi::raw('sum(nominal)*5/100 as total_fee'))
