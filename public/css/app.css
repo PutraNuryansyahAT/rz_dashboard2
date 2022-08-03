@@ -679,6 +679,10 @@ h6 {
   line-height: 1.625;
 }
 
+.static {
+  position: static;
+}
+
 .fixed {
   position: fixed;
 }

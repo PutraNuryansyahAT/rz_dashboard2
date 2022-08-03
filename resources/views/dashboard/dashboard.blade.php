@@ -3,6 +3,7 @@
 @section('maincontent')
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
+    // pie chart
     google.charts.load('current', {
         'packages': ['corechart']
     });
@@ -23,7 +24,7 @@
 
         chart.draw(data, options);
     }
-
+    // static chart
     google.charts.setOnLoadCallback(drawChart2);
 
     function drawChart2() {
@@ -45,6 +46,29 @@
 
         var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
+        chart.draw(data, options);
+    }
+    // Digaram chart
+    google.charts.setOnLoadCallback(drawChart3);
+
+    function drawChart3() {
+        var data = google.visualization.arrayToDataTable([
+            ['Metode Pembayaran', 'Jumlah'],
+            <?php echo $diagrammetode ?>
+
+        ]);
+        var options = {
+            title: "Metode Pembayaran3",
+
+            bar: {
+                groupWidth: "95%"
+            },
+            legend: {
+                position: "none"
+            },
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
         chart.draw(data, options);
     }
 </script>
@@ -162,6 +186,10 @@
                 <!-- Line Chart -->
                 <div class="flex justify-center items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
                     <div id="curve_chart"></div>
+                </div>
+
+                <div class="flex justify-center items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                    <div id="columnchart_values"></div>
                 </div>
 
             </div>
