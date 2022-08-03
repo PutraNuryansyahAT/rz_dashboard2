@@ -29,11 +29,8 @@
 
     function drawChart2() {
         var data = google.visualization.arrayToDataTable([
-            ['Year', 'Sales', 'Expenses'],
-            ['2004', 1000, 400],
-            ['2005', 1170, 460],
-            ['2006', 660, 1120],
-            ['2007', 1030, 540]
+            ['Tahun', 'Total Transaksi', 'Total Fee'],
+            <?php echo $diagramfeetotal ?>
         ]);
 
         var options = {
@@ -147,7 +144,21 @@
         </div>
 
         <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+            <form action="/searchtransaksi" method="get">
+                <div class="p-3">
+                    Tanggal Donasi :
+                    <input type="date" name="myDate1" placeholder="MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text' )" class="form-input w-20">
 
+                    -
+                    <input type="date" name="myDate2" placeholder="MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text' )" class="form-input w-20">
+                    <button class="px-6 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-md active:bg-orange-500 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" type="submit">
+                        Search
+                    </button>
+
+                </div>
+
+
+            </form>
             <table class="w-full whitespace-no-wrap ">
 
                 <thead>

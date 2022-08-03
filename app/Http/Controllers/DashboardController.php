@@ -10,6 +10,7 @@ use DB;
 
 class DashboardController extends Controller
 {
+
     public function viewdashboard()
     {
         $id_amil = auth()->user()->id_amil;
@@ -42,13 +43,19 @@ class DashboardController extends Controller
         $diagrammetode = $metode;
 
         //chart fee dan total 
-        $result3 = DB::select(DB::raw("SELECT SUM(transaksi.nominal) AS total_transaksi,SUM(transaksi.nominal)*0.05 AS total_fee, transaksi.date_transaksi FROM transaksi GROUP BY year(transaksi.date_transaksi)"));
+        $result3 = DB::select(DB::raw("SELECT SUM(transaksi.nominal) AS total_transaksi,SUM(transaksi.nominal)*0.05 AS total_fee, transaksi.date_transaksi FROM transaksi
+        WHERE transaksi.id_amil = $id_amil
+         GROUP BY year(transaksi.date_transaksi)"));
+        $feetotal = "";
+        foreach ($result3 as $val) {
+            $feetotal .= "['" . $val->date_transaksi . "'," . $val->total_transaksi . "," . $val->total_fee . "],";
+        }
+        $diagramfeetotal = $feetotal;
 
 
 
 
-
-        return view('/dashboard.dashboard', compact('diagramprog', 'diagrammetode'), [
+        return view('/dashboard.dashboard', compact('diagramprog', 'diagrammetode', 'diagramfeetotal'), [
             "title" => "Dashboard",
 
             'dashboard' => Transaksi::select('program.nama_program', Transaksi::raw('sum(nominal) as total_transaksi'), Transaksi::raw('sum(nominal)*0.05 as total_fee'))
