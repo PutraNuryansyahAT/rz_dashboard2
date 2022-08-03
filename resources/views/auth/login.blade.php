@@ -1,7 +1,4 @@
 @extends('layout.authentication')
-
-
-
 @section('auth')
 <main class="mt-0 transition-all duration-200 ease-soft-in-out">
     <section>
@@ -23,7 +20,6 @@
                                     <p class="font-bold my-1">{{ session('loginError') }}</p>
                                 </div>
                                 @endif
-
                             </div>
                             <div class="flex-auto p-6">
 
@@ -53,8 +49,8 @@
                             </div>
                             <div class="p-6 px-1 pt-0 text-center bg-transparent border-t-0 border-t-solid rounded-b-2xl lg:px-2">
                                 <p class="mx-auto mb-6 leading-normal text-size-sm">
-                                    Don't have an account?
-                                    <a href="/register" class="relative z-10 font-semibold text-transparent bg-gradient-orange bg-clip-text">Sign up</a> | Register Your ID AMIL?<a href="/registerdamil" class="relative z-10 font-semibold text-transparent bg-gradient-orange bg-clip-text"> Sign here </a>
+                                    Create account?
+                                    <a href="/register" class="relative z-10 font-semibold text-transparent bg-gradient-orange bg-clip-text">Sign up</a> | Register Id Amil?<a href="/registerdamil" class="relative z-10 font-semibold text-transparent bg-gradient-orange bg-clip-text"> Sign here </a>
                                 </p>
                             </div>
                         </div>

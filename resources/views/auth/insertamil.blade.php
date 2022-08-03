@@ -103,7 +103,7 @@
 
                                 <!-- ATAS NAMA -->
                                 <div class="mb-4">
-                                    <input type="input" name="atas_nama" placeholder="Atas Nama" aria-label="bank" aria-describedby="password-addon" class="inputtype" required value="{{ old('no_rekening') }}" />
+                                    <input type="input" name="atas_nama" placeholder="Atas Nama" aria-label="bank" aria-describedby="password-addon" class="inputtype" required value="{{ old('atas_nama') }}" />
                                 </div>
                                 @error('atas_nama')
                                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>

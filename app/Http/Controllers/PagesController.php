@@ -9,7 +9,7 @@ class PagesController extends Controller
     public function viewfaq()
     {
         return view('/pages.faq', [
-            "title" => "Tittle"
+            "title" => "FAQ"
         ]);
     }
 

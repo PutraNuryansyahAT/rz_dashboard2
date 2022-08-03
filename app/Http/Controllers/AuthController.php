@@ -10,7 +10,9 @@ class AuthController extends Controller
 {
     public function login()
     {
-        return view('/auth.login');
+        return view('/auth.login', [
+            "title" => "Login"
+        ]);
     }
 
     public function authenticate(Request $request)
@@ -27,10 +29,8 @@ class AuthController extends Controller
         }
         return back()->with('loginError', 'Login Failed');
     }
-
     public function logout(Request $request)
     {
-
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();

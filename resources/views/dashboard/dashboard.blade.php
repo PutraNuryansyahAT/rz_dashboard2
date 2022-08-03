@@ -1,7 +1,58 @@
 @extends('layout.header')
 
 @section('maincontent')
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {
+        'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart1);
 
+    function drawChart1() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Total Progam yang bertransaksi ', 'Program'],
+            ['Work', 11],
+            ['Eat', 2],
+            ['Commute', 2],
+            ['Watch TV', 2],
+            ['Sleep', 7]
+        ]);
+
+        var options = {
+            title: 'Program '
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+    }
+
+    google.charts.setOnLoadCallback(drawChart2);
+
+    function drawChart2() {
+        var data = google.visualization.arrayToDataTable([
+            ['Year', 'Sales', 'Expenses'],
+            ['2004', 1000, 400],
+            ['2005', 1170, 460],
+            ['2006', 660, 1120],
+            ['2007', 1030, 540]
+        ]);
+
+        var options = {
+            title: 'Company Performance',
+            curveType: 'function',
+            legend: {
+                position: 'bottom'
+            }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+    }
+</script>
+</script>
 <main class="h-full pb-16 overflow-y-auto">
     <div class="container px-6 mx-auto grid">
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
@@ -106,15 +157,19 @@
                 </tr>
             </table>
         </div>
-        <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
-            <div id="grafik">
+        <div class="w-full mb-8 overflow-hidden rounded-lg ">
+            <div class="grid gap-6 mb-8 md:grid-cols-2">
+                <!-- Pie Chart -->
+                <div class="flex justify-center items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                    <div id="piechart"></div>
+                </div>
+                <!-- Line Chart -->
+                <div class="flex justify-center items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                    <div id="curve_chart"></div>
+                </div>
 
             </div>
 
-
         </div>
 </main>
-
-
-
 @endsection
