@@ -129,6 +129,15 @@
                                     <img id="preview-ktp-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif" alt="preview image" style="max-height: 100px;">
 
                                 </div>
+                                <div class="flex mt-6 text-sm">
+                                    <label class="flex items-center dark:text-gray-400 ">
+                                        <input type="checkbox" class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" required />
+                                        <span class="ml-2">
+                                            I agree to the
+                                            <span class="underline">privacy policy</span>
+                                        </span>
+                                    </label>
+                                </div>
 
                                 <!-- Button submit -->
                                 <div class="text-center">
@@ -164,6 +173,8 @@
                                     });
                                 });
                             </script>
+
+
                         </div>
                     </div>
                 </div>

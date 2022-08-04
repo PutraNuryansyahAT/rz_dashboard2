@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->datetime('last_login_date')->nullable();
-            $table->timestamp('date_created')->usercurrent();
+            $table->timestamp('date_created')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
             $table->boolean('aktiv');
         });
         Schema::table('User', function (Blueprint $table) {

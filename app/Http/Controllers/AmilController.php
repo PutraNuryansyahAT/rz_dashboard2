@@ -67,7 +67,7 @@ class AmilController extends Controller
 
     public function store(Request $request)
     {
-        // return ($request);
+
         $validatedData = $request->validate([
             'id_amil' => 'required|numeric|unique:data_amil',
             'no_ktp' => 'required|numeric|unique:data_amil',

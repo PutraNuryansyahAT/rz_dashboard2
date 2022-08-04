@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 
 class AuthController extends Controller
@@ -35,5 +37,40 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
+    }
+
+    public function changepass()
+    {
+        return view(
+            '/auth.changepass',
+            [
+                "title" => "changepassword",
+            ]
+        );
+    }
+    public function reqchangepass(Request $request)
+    {
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => ['required', 'min:5', 'max:10', 'unique:user,password'],
+            'confirm_passowrd' => 'required',
+        ]);
+
+
+        #Match The Old Password
+        if (!Hash::check($request->old_password, auth()->user()->password)) {
+            return back()->with("error", "Old Password Doesn't match!");
+        }
+
+        if (!$request->new_password == $request->confirm_passowrd) {
+            return back()->with("error", "New and Confirm Password Doesn't match!");
+        }
+
+        #Update the new Password
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with("status", "Password changed successfully!");
     }
 }

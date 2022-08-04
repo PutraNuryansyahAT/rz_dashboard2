@@ -36,19 +36,23 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::post('/', [AuthController::class, 'authenticate']);
 Route::post('logout', [AuthController::class, 'logout']);
+Route::get('/changepass', [AuthController::class, 'changepass'])->middleware('auth');
+Route::post('/reqchangepass', [AuthController::class, 'reqchangepass'])->middleware('auth');
 
 
 
 /*Amil */
 Route::get('/settings', [AmilController::class, 'viewsetting'])->middleware('auth');
-Route::put('/update', [AmilController::class, 'update']);
+Route::put('/update', [AmilController::class, 'update'])->middleware('auth');
 Route::get('/download/{filename}', [AmilController::class, 'download'])->name('downloadimg');
 Route::get('/registerdamil', [AmilController::class, 'viewinput']);
 Route::post('/registerdamil', [AmilController::class, 'store']);
 
+
 /*Dashboard*/
 Route::get('/dashboard', [DashboardController::class, 'viewdashboard'])->middleware('auth');
 Route::get('/search', [DashboardController::class, 'search'])->middleware('auth');
+
 
 /*link Afiliasi */
 Route::get('/affiliate', [ViewController::class, 'viewaffiliate'])->middleware('auth');
