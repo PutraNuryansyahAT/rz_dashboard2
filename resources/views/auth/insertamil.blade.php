@@ -38,7 +38,7 @@
 
                                 <!-- NO KTP -->
                                 <div class="mb-4">
-                                    <input type="text" name="no_ktp" placeholder="no ktp" aria-label="Name" aria-describedby="data diri" class="inputtype" value="{{ old('no_ktp') }}" required />
+                                    <input type="text" name="no_ktp" placeholder="no ktp" aria-label="Name" aria-describedby="data diri" class="inputtype" onKeyUp="checkInput(this);" value="{{ old('no_ktp') }}" required />
                                 </div>
                                 @error('no_ktp')
                                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
@@ -70,7 +70,7 @@
 
                                 <!-- NOMOR HP -->
                                 <div class="mb-4">
-                                    <input type="text" name="nomor_hp" placeholder="Nomor HP" aria-label="Name" aria-describedby="data diri" class="inputtype" value="{{ old('nomor_hp') }}" required />
+                                    <input type="text" name="nomor_hp" placeholder="Nomor HP" aria-label="Name" aria-describedby="data diri" class="inputtype" value="{{ old('nomor_hp') }}" onKeyUp="checkInput(this);" required />
                                 </div>
                                 @error('nomor_hp')
                                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
@@ -149,6 +149,13 @@
                             </form>
                             <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
                             <script type="text/javascript">
+                                function checkInput(ob) {
+                                    var invalidChars = /[^0-9]/gi
+                                    if (invalidChars.test(ob.value)) {
+                                        ob.value = ob.value.replace(invalidChars, "");
+                                    }
+                                };
+
                                 function myFunction() {
                                     var x = document.getElementById("new");
                                     if (x.type === "password") {

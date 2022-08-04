@@ -120,7 +120,7 @@
                         Total Fee Transaksi
                     </p>
                     <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        Rp. {{ $total_fee_transaksi }},00
+                        Rp. {{ number_format($total_fee_transaksi, 2, ',', '.'); }}
                     </p>
                 </div>
             </div>
@@ -136,7 +136,7 @@
                         Total Nominal Transaksi
                     </p>
                     <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        Rp. {{ $total_transaksi_nominal->total_nominal }},00
+                        Rp. {{ number_format($total_transaksi_nominal->total_nominal, 2, ',', '.');}}
                     </p>
                 </div>
             </div>
@@ -146,6 +146,7 @@
         <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
             <form action="/search" method="get">
                 <div class="p-3">
+                    @csrf
                     Tanggal Donasi :
                     <input type="date" name="myDate1" placeholder="MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text' )" class="form-input w-20">
 
@@ -154,13 +155,9 @@
                     <button class="px-6 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-orange-1 border border-transparent rounded-md active:bg-orange-500 hover:bg-orange-300 focus:outline-none focus:shadow-outline-purple" type="submit">
                         Search
                     </button>
-
                 </div>
-
-
             </form>
             <table class="w-full whitespace-no-wrap ">
-
                 <thead>
                     <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b  bg-gray-500  ">
                         <th class="px-4 py-3">No</th>
@@ -178,10 +175,10 @@
                         {{ $dashboards->nama_program}}
                     </td>
                     <td class="px-4 py-3 text-sm">
-                        {{ $dashboards->total_transaksi}}
+                        Rp.{{ number_format($dashboards->total_transaksi, 2, ',', '.');}}
                     </td>
                     <td class="px-4 py-3 text-sm">
-                        {{ $dashboards->total_fee }}
+                        Rp.{{ number_format($dashboards->total_fee, 2, ',', '.');}}
                     </td>
 
                     @endforeach

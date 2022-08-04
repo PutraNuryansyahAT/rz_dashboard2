@@ -7,7 +7,6 @@ use Haruncpi\LaravelIdGenerator\IdGenerator;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Amil;
-use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
 class AmilController extends Controller
@@ -35,7 +34,7 @@ class AmilController extends Controller
 
         $date = Carbon::now();
         $a = $request->email;
-        $amil = Amil::where('id_amil', auth()->user()->id_amil);
+        $amil = Amil::where('id', auth()->user()->id_amil);
         $rules = [
             'nama_lengkap' => 'required|max:255',
             'alamat' => 'required|max:255',

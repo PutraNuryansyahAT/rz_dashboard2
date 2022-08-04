@@ -41,7 +41,7 @@
                         {{$loop -> iteration}}
                     </td>
                     <td class="px-4 py-3 text-sm">
-                        {{ $donaturs->id_donatur }}
+                        {{ $donaturs->id }}
                     </td>
                     <td class="px-4 py-3 text-sm">
                         {{ $donaturs->nama}}

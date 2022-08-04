@@ -28,7 +28,6 @@ class LogSuccessfulLogin
     {
         $user = $event->user;
         $user->last_login_date = date('Y-m-d H:i:s');
-
         $user->save();
     }
 }

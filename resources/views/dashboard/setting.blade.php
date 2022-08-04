@@ -59,7 +59,7 @@
 
                 <label class="label">
                     <span class="inputnamesetting">Hp</span>
-                    <input class="block w-full mt-1 text-sm focus:outline-none focus:shadow-outline-purple form-input" placeholder="+62" value="{{ old('nomorhp' ,  $Data_amil->nomor_hp)}}" name="nomor_hp" />
+                    <input class="block w-full mt-1 text-sm focus:outline-none focus:shadow-outline-purple form-input" onKeyUp="checkInput(this);" placeholder="+62" value="{{ old('nomorhp' ,  $Data_amil->nomor_hp)}}" name="nomor_hp" />
                 </label>
                 @error('nomor_hp')
                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
@@ -87,7 +87,7 @@
 
                 <label class="label">
                     <span class="inputnamesetting">No Rekening</span>
-                    <input class="block w-full mt-1 text-sm  form-input" placeholder="No Rekening" name="no_rekening" value="{{ old('no_rekening' , $Data_amil->no_rekening )}}" />
+                    <input class="block w-full mt-1 text-sm  form-input" placeholder="No Rekening" name="no_rekening" onKeyUp="checkInput(this);" value="{{ old('no_rekening' , $Data_amil->no_rekening )}}" />
                 </label>
 
                 <label class="label">
@@ -100,8 +100,7 @@
                 </h1>
                 <label class="block mb-2 text-sm font-medium text-gray-900 ">Surat Pernyataan</label>
                 <input id="file_surat_pernyataan" type="file" name="surat_pernyataan" class="w-full">
-                <a href="{{ $Data_amil->surat_pernyataan }}" class="bg-orange-500 hover:bg-orange-1 text-gray-100 font-semibold hover:text-white py-2 px-5 border border-orange-200 hover:border-transparent rounded"> Lihat Gambar Sebelumnya</a>
-
+                <br>
                 <div class="col-md-12 mb-2">
                     @error('surat_pernyataan')
                     <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
@@ -110,15 +109,21 @@
                     <img id="preview-surat_pernyataan-before-upload" style="max-height: 250px;">
                 </div>
 
+                <a href="{{ $Data_amil->surat_pernyataan }}" class="bg-orange-500 hover:bg-orange-1 text-gray-100 font-semibold hover:text-white py-2 px-5 border border-orange-200 hover:border-transparent rounded" target="_blank">
+                    <i class="fa fa-download" aria-hidden="true"></i></a>
+
+
                 <label class="block mb-2 mt-4 text-sm font-medium text-gray-900 " for="file_input">KTP </label>
                 <input id="file_ktp" type="file" name="ktp" class="w-full">
-                <a href="{{ $Data_amil->ktp }}" class="bg-orange-500 hover:bg-orange-1 text-gray-100 font-semibold hover:text-white py-2 px-5 border border-orange-200 hover:border-transparent rounded"> Lihat Gambar Sebelumnya</a>
+
                 <div class="col-md-12 mb-2">
                     @error('ktp')
                     <p class="text-red-500 text-xs italic -mt-3">{{ $message}}</p>
                     @enderror
                     <img id="preview-ktp-before-upload" style="max-height: 250px;">
                 </div>
+
+                <a href="{{ $Data_amil->ktp }}" class="bg-orange-500 hover:bg-orange-1 text-gray-100 font-semibold hover:text-white py-2 px-5 border border-orange-200 hover:border-transparent rounded" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a>
                 <br>
                 <div class=" flex justify-center">
                     <button type="submit " class=" bg-orange-500 hover:bg-orange-1 text-gray-100 font-semibold hover:text-white py-2 px-5 border border-orange-200 hover:border-transparent rounded">
@@ -129,6 +134,12 @@
         </form>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script type="text/javascript">
+            function checkInput(ob) {
+                var invalidChars = /[^0-9]/gi
+                if (invalidChars.test(ob.value)) {
+                    ob.value = ob.value.replace(invalidChars, "");
+                }
+            };
             $(document).ready(function(e) {
                 $('#file_ktp').change(function() {
 

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('email');
             $table->foreignId('id_program')->references('id_program')->on('program');
             $table->bigInteger('nominal');
-            $table->foreignId('id_amil')->references('id')->on('user');
+            $table->foreignId('id_amil')->references('id_amil')->on('user');
             $table->string('metode_pembayaran');
             $table->string('status_pembayaran');
             $table->timestamp('update_data')->useCurrent();

@@ -20,8 +20,9 @@ class DonaturController extends Controller
     {
         return view('/dashboard.donatur', [
             "title" => "Search Donatur",
-            "donatur" => Donatur::where('id_donatur', $request->searchdonatur)
+            "donatur" => Donatur::where('id', $request->searchdonatur)
                 ->orwhere('email', $request->searchdonatur)
+                ->orwhere('nama',  'LIKE', '%' . $request->searchdonatur . '%')
                 ->where('id_amil', auth()->user()->id_amil)
                 ->get(),
         ]);

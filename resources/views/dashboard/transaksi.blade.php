@@ -21,7 +21,7 @@
                 <!-- Nama Donatur bar -->
                 <div class="p-3 ">
                     <label class="text-sm">
-                        <input class="block w-70 mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input" placeholder="Search" type="text" name="search" />
+                        <input class="block w-70 mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input" placeholder="Atas Nama / Email / No HP" type="text" name="search" />
                         <!-- <select class="block w-64 mt-1 text-sm  form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple " name="donatur">
                             <option class="text-gray-500">--Pilih Donatur--</option>
                             @foreach ($donatur as $donaturs )
@@ -107,7 +107,7 @@
                         {{ $transaksis->id_donatur}} -
 
                         @foreach ($donatur as $donaturs )
-                        @if($donaturs->id_donatur == $transaksis->id_donatur)
+                        @if($donaturs->id == $transaksis->id_donatur)
 
                         {{ $donaturs->nama }}
 
@@ -119,7 +119,7 @@
                         {{ $transaksis->atasnama }}
                     </td>
                     <td class="px-4 py-3 text-sm">
-                        {{ $transaksis->no_hp }}
+                        0{{ $transaksis->no_hp }}
                     </td>
                     <td class="px-4 py-3 text-sm">
                         {{ $transaksis->email }}
@@ -136,12 +136,12 @@
                         @endforeach
                     </td>
                     <td class="px-4 py-3 text-sm">
-                        {{ $transaksis->nominal}},00
+                        Rp.{{number_format($transaksis->nominal, 2, ',', '.'); }}
                     </td>
                     <td class="px-4 py-3 text-sm">
                         {{ $transaksis->id_amil }} -
                         @foreach ($amil as $amils )
-                        @if($amils->id_amil == $transaksis->id_amil)
+                        @if($amils->id == $transaksis->id_amil)
                         {{ $amils->nama_lengkap }}
 
                         @endif
