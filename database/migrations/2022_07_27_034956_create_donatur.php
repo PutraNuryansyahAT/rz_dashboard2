@@ -14,16 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('Donatur', function (Blueprint $table) {
-            $table->string('id_donatur')->primary();
+            $table->id();
             $table->string('nama');
             $table->string('nomorhp');
             $table->string('email');
-            $table->string('id_amil');
+            $table->foreignId('id_amil')->references('id')->on('user');
             $table->timestamp('date_registrasi')->useCurrent();
-        });
-
-        Schema::table('Donatur', function (Blueprint $table) {
-            $table->foreign('id_amil')->references('id_amil')->on('user');
         });
     }
 

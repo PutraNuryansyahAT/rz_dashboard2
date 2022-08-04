@@ -30,7 +30,7 @@
                                 DATA DIRI
                                 <!-- ID AMIL -->
                                 <div class="mb-4">
-                                    <input type="text" name="id_amil" placeholder="id amil" aria-label="Name" aria-describedby="data diri" class="inputtype" value="{{ old('id_amil') }}" required />
+                                    <input type="hidden" name="id_amil" placeholder="id amil" aria-label="Name" aria-describedby="data diri" class="inputtype" value="{{ old('id_amil') }}" />
                                 </div>
                                 @error('id_amil')
                                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
@@ -84,30 +84,7 @@
                                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
                                 @enderror
 
-                                DATA REKENING
-                                <!-- Nama Bank -->
-                                <div class="mb-4">
-                                    <input type="input" name="nama_bank" placeholder="Bank yang digunakan" aria-label="bank" aria-describedby="password-addon" class="inputtype" required value="{{ old('nama_bank') }}" />
-                                </div>
-                                @error('nama_bank')
-                                <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
-                                @enderror
 
-                                <!-- NO REKENING -->
-                                <div class="mb-4">
-                                    <input type="input" name="no_rekening" placeholder="Nomor Rekening" aria-label="bank" aria-describedby="password-addon" class="inputtype" required value="{{ old('no_rekening') }}" />
-                                </div>
-                                @error('no_rekening')
-                                <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
-                                @enderror
-
-                                <!-- ATAS NAMA -->
-                                <div class="mb-4">
-                                    <input type="input" name="atas_nama" placeholder="Atas Nama" aria-label="bank" aria-describedby="password-addon" class="inputtype" required value="{{ old('atas_nama') }}" />
-                                </div>
-                                @error('atas_nama')
-                                <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
-                                @enderror
 
                                 UPLOAD BERKAS
                                 <label class="block mb-2 text-xs font-medium text-gray-900 ">Surat Pernyataan</label>
@@ -133,7 +110,7 @@
                                     <label class="flex items-center dark:text-gray-400 ">
                                         <input type="checkbox" class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" required />
                                         <span class="ml-2">
-                                            I agree to the
+                                            Saya setuju telah
                                             <span class="underline">privacy policy</span>
                                         </span>
                                     </label>

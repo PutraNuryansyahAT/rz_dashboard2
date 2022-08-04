@@ -16,22 +16,16 @@ return new class extends Migration
         Schema::create('Transaksi', function (Blueprint $table) {
             $table->id('id_transaksi');
             $table->datetime('date_transaksi');
-            $table->string('id_donatur');
+            $table->foreignId('id_donatur')->references('id')->on('donatur');
             $table->string('atasnama');
             $table->bigInteger('no_hp');
             $table->string('email');
             $table->foreignId('id_program')->references('id_program')->on('program');
             $table->bigInteger('nominal');
-            $table->string('id_amil');
+            $table->foreignId('id_amil')->references('id')->on('user');
             $table->string('metode_pembayaran');
             $table->string('status_pembayaran');
             $table->timestamp('update_data')->useCurrent();
-        });
-
-        Schema::table('Transaksi', function (Blueprint $table) {
-            $table->foreign('id_donatur')->references('id_donatur')->on('donatur');
-
-            $table->foreign('id_amil')->references('id_amil')->on('user');
         });
     }
 

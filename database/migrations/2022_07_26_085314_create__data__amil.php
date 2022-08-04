@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('Data_amil', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->string('id_amil')->primary();
+            $table->id();
             $table->string('no_ktp')->unique();
             $table->string('nama_lengkap');
-            $table->string('nomor_hp');
+            $table->string('nomor_hp')->unique();
             $table->string('email')->unique();
             $table->string('cabang_rumahzakat')->nullable();
             $table->string('nama_bank')->nullable();
-            $table->string('no_rekening')->nullable();
+            $table->string('no_rekening')->nullable()->unique();
             $table->string('atas_nama')->nullable();
             $table->string('surat_pernyataan')->nullable();
             $table->string('ktp')->nullable();

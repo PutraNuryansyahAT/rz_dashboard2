@@ -17,16 +17,13 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->string('username')->unique();
-            $table->string('id_amil');
+            $table->foreignId('id_amil')->references('id')->on('data_amil');
             $table->string('password');
             $table->rememberToken();
             $table->datetime('last_login_date')->nullable();
             $table->timestamp('date_created')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
             $table->boolean('aktiv');
-        });
-        Schema::table('User', function (Blueprint $table) {
-            $table->foreign('id_amil')->references('id_amil')->on('data_amil');
         });
     }
 

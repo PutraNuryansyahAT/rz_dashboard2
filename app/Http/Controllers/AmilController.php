@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Http\Request;
 use App\Models\Amil;
 use Illuminate\Support\Facades\Storage;
@@ -68,19 +68,20 @@ class AmilController extends Controller
     public function store(Request $request)
     {
 
+        $id = IdGenerator::generate(['table' => 'data_amil', 'length' => 6, 'prefix' => date('ymmddss'), 'reset_on_prefix_change' => true]);
+
+
+
+
         $validatedData = $request->validate([
-            'id_amil' => 'required|numeric|unique:data_amil',
             'no_ktp' => 'required|numeric|unique:data_amil',
             'email' => 'required|email:dns|unique:data_amil',
             'nama_lengkap' => 'required|max:255',
             'alamat' => 'required|max:255',
             'nomor_hp' => 'required|numeric|digits_between:3,15',
             'cabang_rumahzakat' => 'required|max:255',
-            'nama_bank' => 'required|max:255',
-            'no_rekening' => 'required|unique:data_amil|numeric|digits_between:2,15',
-            'atas_nama' => 'required|max:255',
-            'surat_pernyataan' => 'required|image|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'ktp' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'surat_pernyataan' => 'image|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'ktp' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'aktiv' => 'required|max:1',
 
         ]);
@@ -91,6 +92,8 @@ class AmilController extends Controller
         if ($request->file('ktp')) {
             $validatedData['ktp'] = $request->file('ktp')->store('ktp');
         }
+
+        $validatedData['id'] = $id;
         Amil::insert($validatedData);
 
         return redirect('/')->with('success', 'Id Amil akan diproses');
