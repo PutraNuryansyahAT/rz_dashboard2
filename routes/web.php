@@ -48,6 +48,7 @@ Route::post('/registerdamil', [AmilController::class, 'store']);
 
 /*Dashboard*/
 Route::get('/dashboard', [DashboardController::class, 'viewdashboard'])->middleware('auth');
+Route::get('/search', [DashboardController::class, 'search'])->middleware('auth');
 
 /*link Afiliasi */
 Route::get('/affiliate', [ViewController::class, 'viewaffiliate'])->middleware('auth');

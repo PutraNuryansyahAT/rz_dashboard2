@@ -144,7 +144,7 @@
         </div>
 
         <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
-            <form action="/searchtransaksi" method="get">
+            <form action="/search" method="get">
                 <div class="p-3">
                     Tanggal Donasi :
                     <input type="date" name="myDate1" placeholder="MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text' )" class="form-input w-20">

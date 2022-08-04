@@ -16,7 +16,7 @@ class DashboardController extends Controller
         $id_amil = auth()->user()->id_amil;
         $a = Transaksi::select(Transaksi::raw('sum(nominal)*5/100 as total_fee'))
             ->groupBy('id_program')
-            ->where('status_pembayaran', 'Success')
+
             ->where('id_amil', auth()->user()->id_amil)->pluck('total_fee');
 
         // chart program total
@@ -52,17 +52,14 @@ class DashboardController extends Controller
         }
         $diagramfeetotal = $feetotal;
 
-
-
-
         return view('/dashboard.dashboard', compact('diagramprog', 'diagrammetode', 'diagramfeetotal'), [
             "title" => "Dashboard",
 
             'dashboard' => Transaksi::select('program.nama_program', Transaksi::raw('sum(nominal) as total_transaksi'), Transaksi::raw('sum(nominal)*0.05 as total_fee'))
                 ->rightjoin('program', 'program.id_program', '=', 'transaksi.id_program')
-                ->groupBy('program.nama_program')
-                ->where('status_pembayaran', 'Success')
+
                 ->where('id_amil', auth()->user()->id_amil)
+                ->groupBy('program.nama_program')
                 ->get(),
             'total_fee_transaksi' => $a->sum(),
 
@@ -72,8 +69,25 @@ class DashboardController extends Controller
             //total_transaksi_nominal
             'total_transaksi_nominal' => Transaksi::select(Transaksi::raw('sum(nominal) as total_nominal'))
                 ->where('id_amil', auth()->user()->id_amil)
-                ->where('status_pembayaran', 'Success')->first(),
+                ->first(),
             'banyak_transaksi' => Transaksi::where('id_amil', auth()->user()->id_amil)->count(),
+
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        $query = Transaksi::select('program.nama_program', Transaksi::raw('sum(nominal) as total_transaksi'), Transaksi::raw('sum(nominal)*0.05 as total_fee'))
+            ->rightjoin('program', 'program.id_program', '=', 'transaksi.id_program');
+
+        if ($request->filled('myDate1') or  $request->filled('myDate2')) {
+            $query = $query->wherebetween('date_transaksi', [$request->myDate1, $request->myDate2]);
+        }
+        return view('/dashboard.totaldanfee', [
+            "title" => "Search Total and Fee",
+            'dashboard' => $query->where('id_amil', auth()->user()->id_amil)
+                ->groupBy('program.nama_program')
+                ->get(),
 
         ]);
     }
