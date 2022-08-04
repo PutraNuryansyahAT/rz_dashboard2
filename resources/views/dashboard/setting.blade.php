@@ -97,37 +97,34 @@
 
                 <h1 class="mt-6  mb-4 text-xl font-semibold text-gray-700 ">
                     Upload Berkas
-                    </h2>
-                    <label class="block mb-2 text-sm font-medium text-gray-900 ">Surat Pernyataan</label>
-                    <input id="file_surat_pernyataan" type="file" name="surat_pernyataan">
-                    <a href="{{ $Data_amil->surat_pernyataan }}" class="bg-orange-500 hover:bg-orange-1 text-gray-100 font-semibold hover:text-white py-2 px-5 border border-orange-200 hover:border-transparent rounded"> Lihat Gambar Sebelumnya</a>
+                </h1>
+                <label class="block mb-2 text-sm font-medium text-gray-900 ">Surat Pernyataan</label>
+                <input id="file_surat_pernyataan" type="file" name="surat_pernyataan" class="w-full">
+                <a href="{{ $Data_amil->surat_pernyataan }}" class="bg-orange-500 hover:bg-orange-1 text-gray-100 font-semibold hover:text-white py-2 px-5 border border-orange-200 hover:border-transparent rounded"> Lihat Gambar Sebelumnya</a>
 
-                    <div class="col-md-12 mb-2">
-                        @error('surat_pernyataan')
-                        <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
-                        @enderror
-                        <!-- <img src="{{ asset('storage/'.$Data_amil->surat_pernyataan) }}" width="150"> -->
-                        <img id="preview-surat_pernyataan-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif" alt="preview image" style="max-height: 250px;">
-                    </div>
+                <div class="col-md-12 mb-2">
+                    @error('surat_pernyataan')
+                    <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
+                    @enderror
+                    <!-- <img src="{{ asset('storage/'.$Data_amil->surat_pernyataan) }}" width="150"> -->
+                    <img id="preview-surat_pernyataan-before-upload" style="max-height: 250px;">
+                </div>
 
-                    <label class="block mb-2 mt-4 text-sm font-medium text-gray-900 " for="file_input">KTP </label>
-                    <input id="file_ktp" type="file" name="ktp">
-                    <a href="{{ $Data_amil->ktp }}" class="bg-orange-500 hover:bg-orange-1 text-gray-100 font-semibold hover:text-white py-2 px-5 border border-orange-200 hover:border-transparent rounded"> Lihat Gambar Sebelumnya</a>
-                    <div class="col-md-12 mb-2">
-                        @error('ktp')
-                        <p class="text-red-500 text-xs italic -mt-3">{{ $message}}</p>
-                        @enderror
-                        <img id="preview-ktp-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif" alt="preview image" style="max-height: 250px;">
-
-                    </div>
-                    <br>
-                    <div class=" flex justify-center">
-                        <button type="submit " class=" bg-orange-500 hover:bg-orange-1 text-gray-100 font-semibold hover:text-white py-2 px-5 border border-orange-200 hover:border-transparent rounded">
-                            Update
-                        </button>
-                    </div>
-
-
+                <label class="block mb-2 mt-4 text-sm font-medium text-gray-900 " for="file_input">KTP </label>
+                <input id="file_ktp" type="file" name="ktp" class="w-full">
+                <a href="{{ $Data_amil->ktp }}" class="bg-orange-500 hover:bg-orange-1 text-gray-100 font-semibold hover:text-white py-2 px-5 border border-orange-200 hover:border-transparent rounded"> Lihat Gambar Sebelumnya</a>
+                <div class="col-md-12 mb-2">
+                    @error('ktp')
+                    <p class="text-red-500 text-xs italic -mt-3">{{ $message}}</p>
+                    @enderror
+                    <img id="preview-ktp-before-upload" style="max-height: 250px;">
+                </div>
+                <br>
+                <div class=" flex justify-center">
+                    <button type="submit " class=" bg-orange-500 hover:bg-orange-1 text-gray-100 font-semibold hover:text-white py-2 px-5 border border-orange-200 hover:border-transparent rounded">
+                        Update
+                    </button>
+                </div>
             </div>
         </form>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -161,7 +158,6 @@
 
             });
         </script>
-
     </div>
 </main>
 @endsection

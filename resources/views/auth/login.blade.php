@@ -49,8 +49,7 @@
                             </div>
                             <div class="p-6 px-1 pt-0 text-center bg-transparent border-t-0 border-t-solid rounded-b-2xl lg:px-2">
                                 <p class="mx-auto mb-6 leading-normal text-size-sm">
-                                    Create account?
-                                    <a href="/register" class="relative z-10 font-semibold text-transparent bg-gradient-orange bg-clip-text">Sign up</a> | Register Id Amil?<a href="/registerdamil" class="relative z-10 font-semibold text-transparent bg-gradient-orange bg-clip-text"> Sign here </a>
+                                    Create account ?<a href="/registerdamil" class="relative z-10 font-semibold text-transparent bg-gradient-orange bg-clip-text"> Sign Up </a>
                                 </p>
                             </div>
                         </div>

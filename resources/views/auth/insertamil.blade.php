@@ -84,8 +84,30 @@
                                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
                                 @enderror
 
+                                USER
+                                <!-- User -->
+                                <div class="mb-4">
+                                    <input type="text" name="username" placeholder="Username" aria-label="Name" aria-describedby="email-addon" class="inputtype" value="{{ old('username') }}" required />
+                                </div>
+                                @error('username')
+                                <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
+                                @enderror
+                                <!-- Passowrd -->
+                                <div class="mb-4">
+                                    <input type="password" name="password" placeholder="Password" aria-label="Password" aria-describedby="password-addon" class="inputtype" id="new" required value="{{ old('password') }}" />
 
-
+                                    <input type="checkbox" class="text-sm" onclick=" myFunction()">show password
+                                    <br><span id='message'></span>
+                                </div>
+                                @error('password')
+                                <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
+                                @enderror
+                                <div class="mb-4">
+                                    <input type="password" name="confirm_password" placeholder="Confirm Password" aria-label="Password" aria-describedby="password-addon" onkeyup='check();' class="inputtype" id="veri" required value="{{ old('confirm_password') }}" />
+                                    <input type="checkbox" class="text-sm" onclick=" myFunction2()">show password</br> </br>
+                                    <span id='message'></span>
+                                </div>
+                                <!-- Berkas -->
                                 UPLOAD BERKAS
                                 <label class="block mb-2 text-xs font-medium text-gray-900 ">Surat Pernyataan</label>
                                 <input id="file_surat_pernyataan" type="file" name="surat_pernyataan">
@@ -94,7 +116,8 @@
                                     @error('surat_pernyataan')
                                     <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
                                     @enderror
-                                    <img id="preview-surat_pernyataan-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif" alt="preview image" style="max-height: 100px;">
+                                    <br>
+                                    <img id="preview-surat_pernyataan-before-upload" style="max-height: 100px;">
                                 </div>
 
                                 <label class="block mb-2 mt-4 text-xs font-medium text-gray-900 " for="file_input">KTP </label>
@@ -103,7 +126,8 @@
                                     @error('ktp')
                                     <p class="text-red-500 text-xs italic -mt-3">{{ $message}}</p>
                                     @enderror
-                                    <img id="preview-ktp-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif" alt="preview image" style="max-height: 100px;">
+                                    <br>
+                                    <img id="preview-ktp-before-upload" style="max-height: 100px;">
 
                                 </div>
                                 <div class="flex mt-6 text-sm">
@@ -125,6 +149,33 @@
                             </form>
                             <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
                             <script type="text/javascript">
+                                function myFunction() {
+                                    var x = document.getElementById("new");
+                                    if (x.type === "password") {
+                                        x.type = "text";
+                                    } else {
+                                        x.type = "password";
+                                    }
+                                }
+
+                                function myFunction2() {
+                                    var x = document.getElementById("veri");
+                                    if (x.type === "password") {
+                                        x.type = "text";
+                                    } else {
+                                        x.type = "password";
+                                    }
+                                }
+                                var check = function() {
+                                    if (document.getElementById('new').value ==
+                                        document.getElementById('veri').value) {
+                                        document.getElementById('message').style.color = 'green';
+                                        document.getElementById('message').innerHTML = 'matching';
+                                    } else {
+                                        document.getElementById('message').style.color = 'red';
+                                        document.getElementById('message').innerHTML = 'not matching';
+                                    }
+                                }
                                 $(document).ready(function(e) {
                                     $('#file_ktp').change(function() {
 

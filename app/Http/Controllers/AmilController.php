@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Amil;
 use Illuminate\Support\Facades\Storage;
@@ -16,7 +18,7 @@ class AmilController extends Controller
     {
         return view('/dashboard.setting', [
             "title" => "Setting",
-            "Data_amil" => Amil::where('id_amil', auth()->user()->id_amil)->first()
+            "Data_amil" => Amil::where('id', auth()->user()->id_amil)->first()
         ]);
     }
 
@@ -70,10 +72,7 @@ class AmilController extends Controller
 
         $id = IdGenerator::generate(['table' => 'data_amil', 'length' => 6, 'prefix' => date('ymmddss'), 'reset_on_prefix_change' => true]);
 
-
-
-
-        $validatedData = $request->validate([
+        $validatedDataamil = $request->validate([
             'no_ktp' => 'required|numeric|unique:data_amil',
             'email' => 'required|email:dns|unique:data_amil',
             'nama_lengkap' => 'required|max:255',
@@ -85,18 +84,29 @@ class AmilController extends Controller
             'aktiv' => 'required|max:1',
 
         ]);
+        $validatedDatauser = $request->validate([
+            'username' => 'required|max:25|unique:user',
+            'password' => ['required', 'min:5', 'max:10'],
+            'aktiv' => 'required'
+        ]);
 
+        if (!$request->password == $request->confirm_password) {
+            return back()->with("registError", "New and Confirm Password Doesn't match!");
+        }
         if ($request->file('surat_pernyataan')) {
-            $validatedData['surat_pernyataan'] = $request->file('surat_pernyataan')->store('surat_pernyataan');
+            $validatedDataamil['surat_pernyataan'] = $request->file('surat_pernyataan')->store('surat_pernyataan');
         }
         if ($request->file('ktp')) {
-            $validatedData['ktp'] = $request->file('ktp')->store('ktp');
+            $validatedDataamil['ktp'] = $request->file('ktp')->store('ktp');
         }
 
-        $validatedData['id'] = $id;
-        Amil::insert($validatedData);
+        $validatedDataamil['id'] = $id;
+        $validatedDatauser['id_amil'] = $id;
+        $validatedDatauser['password'] = Hash::make($validatedDatauser['password']);
+        Amil::insert($validatedDataamil);
+        User::insert($validatedDatauser);
 
-        return redirect('/')->with('success', 'Id Amil akan diproses');
+        return redirect('/')->with('success', 'Akun Anda akan segera diproses, silahkan menunggu tanggapan gmail');
     }
 
 
