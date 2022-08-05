@@ -29,26 +29,30 @@
                     <p class="font-bold my-1">{{ session('error') }}</p>
                 </div>
                 @endif
+                <!-- OLD PASSWORD -->
                 <label class="label">
                     <span class="inputnamesetting">Old Password</span>
-                    <input type="password" class="block w-full mt-1 text-sm form-input " placeholder="old password" name="old_password" id="old" value="{{ old('old_password')}}" />
+                    <input type="password" class="block w-full mt-1 text-sm form-input " placeholder="old password" name="old_password" id="old" />
                 </label>
                 <input type="checkbox" class="text-sm" onclick=" myFunction()">show password
                 @error('old_password')
                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
                 @enderror
+
+                <!-- New PASSWORD -->
                 <label class="label">
                     <span class="inputnamesetting">New Password</span>
-                    <input type="password" class="block w-full mt-1 text-sm form-input " placeholder="New Password" name="new_password" id="new" value="{{ old('new_password')}}" />
+                    <input type="password" class="block w-full mt-1 text-sm form-input " placeholder="New Password" name="new_password" id="new" />
                 </label>
                 <input type="checkbox" class="text-sm" onclick=" myFunction2()">show password
                 @error('new_password')
                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
-
                 @enderror
+
+                <!-- CONFIRM PASSWORD -->
                 <label class="label">
                     <span class="inputnamesetting">Confirm New Password</span>
-                    <input type="password" class="block w-full mt-1 text-sm form-input " placeholder="Confirm Password" name="confirm_passowrd" id="veri" value="{{ old('confirm_password')}}" />
+                    <input type="password" class="block w-full mt-1 text-sm form-input " placeholder="Confirm Password" name="confirm_passowrd" id="veri" onkeyup='check();' />
                 </label>
                 <input type="checkbox" class="text-sm" onclick=" myFunction3()">show password
 
@@ -58,11 +62,13 @@
                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
 
                 @enderror
+
                 <br>
                 <br>
                 <button type="submit " class=" bg-orange-500 hover:bg-orange-1 text-gray-100 font-semibold hover:text-white py-2 px-5 border border-orange-200 hover:border-transparent rounded">
                     Change
                 </button>
+
 
 
             </div>

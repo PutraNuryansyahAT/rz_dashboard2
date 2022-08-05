@@ -94,7 +94,7 @@
                                 @enderror
                                 <!-- Passowrd -->
                                 <div class="mb-4">
-                                    <input type="password" name="password" placeholder="Password" aria-label="Password" aria-describedby="password-addon" class="inputtype" id="new" required value="{{ old('password') }}" />
+                                    <input type="password" name="password" placeholder="Password" aria-label="Password" aria-describedby="password-addon" class="inputtype" id="new" required />
 
                                     <input type="checkbox" class="text-sm" onclick=" myFunction()">show password
                                     <br><span id='message'></span>
@@ -103,7 +103,7 @@
                                 <p class="text-red-500 text-xs italic -mt-3">{{ $message }}</p>
                                 @enderror
                                 <div class="mb-4">
-                                    <input type="password" name="confirm_password" placeholder="Confirm Password" aria-label="Password" aria-describedby="password-addon" onkeyup='check();' class="inputtype" id="veri" required value="{{ old('confirm_password') }}" />
+                                    <input type="password" name="confirm_password" placeholder="Confirm Password" aria-label="Password" aria-describedby="password-addon" onkeyup='check();' class="inputtype" id="veri" required />
                                     <input type="checkbox" class="text-sm" onclick=" myFunction2()">show password</br> </br>
                                     <span id='message'></span>
                                 </div>
@@ -173,6 +173,7 @@
                                         x.type = "password";
                                     }
                                 }
+                                // validasi new password dan confirm password
                                 var check = function() {
                                     if (document.getElementById('new').value ==
                                         document.getElementById('veri').value) {

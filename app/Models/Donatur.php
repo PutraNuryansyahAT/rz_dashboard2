@@ -9,5 +9,4 @@ class Donatur extends Model
 {
     use HasFactory;
     protected $table = 'donatur';
-    protected $primaryKey = 'id_donatur';
 }
