@@ -1,7 +1,4 @@
 @extends('layout.authentication')
-
-
-
 @section('auth')
 <main class="mt-0 transition-all duration-200 ease-soft-in-out">
     <section class="min-h-screen mb-32">

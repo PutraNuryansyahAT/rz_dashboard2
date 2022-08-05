@@ -52,7 +52,7 @@
                 <!-- CONFIRM PASSWORD -->
                 <label class="label">
                     <span class="inputnamesetting">Confirm New Password</span>
-                    <input type="password" class="block w-full mt-1 text-sm form-input " placeholder="Confirm Password" name="confirm_passowrd" id="veri" onkeyup='check();' />
+                    <input type="password" class="block w-full mt-1 text-sm form-input " placeholder="Confirm Password" name="confirm_passowrd" id="veri" />
                 </label>
                 <input type="checkbox" class="text-sm" onclick=" myFunction3()">show password
 
@@ -71,8 +71,10 @@
 
 
 
+
             </div>
         </form>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script type="text/javascript">
             function myFunction() {
                 var x = document.getElementById("old");
